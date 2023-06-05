@@ -12,8 +12,6 @@
   <form class="w-75 mx-auto">
     <p>test5</p>
     <div class='date'><div>
-    <div class='bikou'></div>
-    <input type="submit" class="mt-4 btn btn-primary" value="送信">
     <datalist id="data-list">
       <option value="0900"></option>
       <option value="0930"></option>
@@ -57,6 +55,8 @@
       <option value="2830"></option>  
       <option value="2900"></option>
     </datalist>
+    <div class='bikou'></div>
+    <input type="submit" class="mt-4 btn btn-primary" value="送信">
   </form>
 
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
@@ -73,13 +73,14 @@
          const liffId = "1661205911-9ydyRaqK";
          initializeLiff(liffId);
          for (let i = 1; i < lastday.getDate() + 1; i += 1) {
-           $('.date').append(`<div class="day-${i} row"></div>`);
+           $('.date').append(`<div class="day-${i} row my-2"></div>`);
             // 今日が15日より先だったら
             if (day > 15){
               if(i < 16){
                 $(`.day-${i}`).append(
                   `<label for="text" name="day-${i}">${i}日：</label>`,
                   `<input class="col-4" type="text" list="data-list" name="day-${i}" step="1800"/>`,
+                  `<p>〜</p>`,
                   `<input class="col-4" type="text" list="data-list" name="day-${i}" step="1800"/>`
                 );
               }
@@ -88,7 +89,7 @@
                 $(`.day-${i}`).append(
                   `<label for="text" name="day-${i}">${i}日：</label>`,
                   `<input class="col-4" type="text" list="data-list" name="day-${i}" step="1800"/>`,
-                  `<p>〜</p>`,
+                  `<p class="mx-2 my-auto">〜</p>`,
                   `<input class="col-4" type="text" list="data-list" name="day-${i}" step="1800"/>`
                 );
               } 
