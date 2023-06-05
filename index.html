@@ -79,22 +79,22 @@
               if(i < 16){
                 $(`.day-${i}`).append(
                   `<label for="text" name="day-${i}">${i}日：</label>`,
-                  `<input type="text" list="data-list" name="day-${i}" step="1800"/>`,
-                  `<input type="text" list="data-list" name="day-${i}" step="1800"/>`
+                  `<input class="col-4" type="text" list="data-list" name="day-${i}" step="1800"/>`,
+                  `<input class="col-4" type="text" list="data-list" name="day-${i}" step="1800"/>`
                 );
               }
             } else {
               if(i > 15){
                 $(`.day-${i}`).append(
                   `<label for="text" name="day-${i}">${i}日：</label>`,
-                  `<input type="text" list="data-list" name="day-${i}" step="1800"/>`,
+                  `<input class="col-4" type="text" list="data-list" name="day-${i}" step="1800"/>`,
                   `<p>〜</p>`,
-                  `<input type="text" list="data-list" name="day-${i}" step="1800"/>`
+                  `<input class="col-4" type="text" list="data-list" name="day-${i}" step="1800"/>`
                 );
               } 
             }
           }
-          $('.bikou').pretend(
+          $('.bikou').append(
             `<p class="mt-3">備考</p>`,
             `<textarea class="form-control w-100 mt-1" name="bikou" placeholder=""rows="5"></textarea>`
           );
