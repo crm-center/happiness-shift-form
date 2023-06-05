@@ -10,7 +10,7 @@
 </head>
 <body>
   <form class="w-75 mx-auto">
-    <p>test5</p>
+    <p>test6</p>
     <div class='date'><div>
     <p class="mt-3">備考</p>
     <div class='bikou'>
@@ -75,30 +75,30 @@
      $(document).ready(function () {
          const liffId = "1661326584-85YGYPYw";
          initializeLiff(liffId);
-         for (let i = 1; i < lastday.getDate() + 1; i += 1) {
-            // 今日が15日より先だったら
-            if (day > 15){
-              if(i < 16){
-                $('.date').append(`<div class="day-${i} row my-2"></div>`);
-                $(`.day-${i}`).append(
-                  `<label for="text" name="day-${i}">${i}日：</label>`,
-                  `<input class="col-4" type="text" list="data-list" name="day-start-${i}" step="1800"/>`,
-                  `<p>〜</p>`,
-                  `<input class="col-4" type="text" list="data-list" name="day-end-${i}" step="1800"/>`
-                );
-              }
-            } else {
-              if(i > 15){
-                $('.date').append(`<div class="day-${i} row my-2"></div>`);
-                $(`.day-${i}`).append(
-                  `<label for="text" name="day-${i}">${i}日：</label>`,
-                  `<input class="col-4" type="text" list="data-list" name="day-start-${i}" step="1800"/>`,
-                  `<p class="mx-2 my-auto">〜</p>`,
-                  `<input class="col-4" type="text" list="data-list" name="day-end-${i}" step="1800"/>`
-                );
-              } 
-            }
-          }
+//          for (let i = 1; i < lastday.getDate() + 1; i += 1) {
+//             // 今日が15日より先だったら
+//             if (day > 15){
+//               if(i < 16){
+//                 $('.date').append(`<div class="day-${i} row my-2"></div>`);
+//                 $(`.day-${i}`).append(
+//                   `<label for="text" name="day-${i}">${i}日：</label>`,
+//                   `<input class="col-4" type="text" list="data-list" name="day-start-${i}" step="1800"/>`,
+//                   `<p>〜</p>`,
+//                   `<input class="col-4" type="text" list="data-list" name="day-end-${i}" step="1800"/>`
+//                 );
+//               }
+//             } else {
+//               if(i > 15){
+//                 $('.date').append(`<div class="day-${i} row my-2"></div>`);
+//                 $(`.day-${i}`).append(
+//                   `<label for="text" name="day-${i}">${i}日：</label>`,
+//                   `<input class="col-4" type="text" list="data-list" name="day-start-${i}" step="1800"/>`,
+//                   `<p class="mx-2 my-auto">〜</p>`,
+//                   `<input class="col-4" type="text" list="data-list" name="day-end-${i}" step="1800"/>`
+//                 );
+//               } 
+//             }
+//           }
         })
 
         function initializeLiff(liffId) {
@@ -129,19 +129,19 @@
             $('form').submit(function () {
                 let msg = 'シフト希望：'
                 let has_date = false;
-                for (let i = 1; i < lastday.getDate() + 1; i += 1) {
-                  if($('[name=day-start-${i}]').val() && $('[name=day-end-${i}]').val()){
-                    msg += `\n${i}日: $('[name=day-start-${i}]').val() ~ $('[name=day-end-${i}]').val()`;
-                    has_date = true;
-                  }
-                }
-                if(has_date){
-                  const message = msg;
-                } else {
-                  const message = 'シフトの希望がありませんでした。';
-                }
-              console.log(message);
-                sendText(message);
+//                 for (let i = 1; i < lastday.getDate() + 1; i += 1) {
+//                   if($('[name=day-start-${i}]').val() && $('[name=day-end-${i}]').val()){
+//                     msg += `\n${i}日: $('[name=day-start-${i}]').val() ~ $('[name=day-end-${i}]').val()`;
+//                     has_date = true;
+//                   }
+//                 }
+//                 if(has_date){
+//                   const message = msg;
+//                 } else {
+//                   const message = 'シフトの希望がありませんでした。';
+//                 }
+//               console.log(message);
+                sendText($('[name=bikou]').val());
                 return false;
             });
         });
