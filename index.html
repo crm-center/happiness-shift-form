@@ -11,8 +11,7 @@
 <body>
   <form class="w-75 mx-auto">
     <div class='date'><div>
-    <div class='bikou'>
-    </div>
+    <div class='bikou'></div>
     <input type="submit" class="mt-4 btn btn-primary" value="送信">
     <datalist id="data-list">
       <option value="09:00"></option>
@@ -78,16 +77,14 @@
               if(i < 16){
                 $('.date').append(
                   `<label for="time" name="day-${i}">${i}日：</label>`,
-                  `<input type="text" list="data-list" name="day-${i}" step="1800"/>`,
-                  `<span></span>`
+                  `<input type="text" list="data-list" name="day-${i}" step="1800"/>`
                 );
               }
             } else {
               if(i > 15){
                 $('.date').append(
                   `<label for="time" name="day-${i}">${i}日：</label>`,
-                  `<input type="time" list="data-list" name="day-${i}" step="1800"/>`,
-                  `<span></span>`
+                  `<input type="time" list="data-list" name="day-${i}" step="1800"/>`
                 );
               } 
             }
