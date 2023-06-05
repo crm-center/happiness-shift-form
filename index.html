@@ -12,7 +12,9 @@
   <form class="w-75 mx-auto">
     <p>test5</p>
     <div class='date'><div>
-    <datalist id="data-list">
+    <div class='bikou'></div>
+    <input type="submit" class="mt-4 btn btn-primary" value="送信">
+      <datalist id="data-list">
       <option value="0900"></option>
       <option value="0930"></option>
       <option value="1000"></option>
@@ -55,8 +57,6 @@
       <option value="2830"></option>  
       <option value="2900"></option>
     </datalist>
-    <div class='bikou'></div>
-    <input type="submit" class="mt-4 btn btn-primary" value="送信">
   </form>
 
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
@@ -136,8 +136,12 @@
                     has_date = true;
                   }
                 }
-                msg = has_date ? msg : 'シフトの希望がありませんでした。';
-                sendText(msg);
+                if(has_date){
+                  const message = msg;
+                } else {
+                  const message = 'シフトの希望がありませんでした。';
+                }
+                sendText(message);
                 return false;
             });
         });
