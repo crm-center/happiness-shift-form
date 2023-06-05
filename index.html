@@ -72,11 +72,11 @@
      $(document).ready(function () {
          const liffId = "1661205911-9ydyRaqK";
          initializeLiff(liffId);
-         $('.date').append(`<div class="day-${i} row my-2"></div>`);
          for (let i = 1; i < lastday.getDate() + 1; i += 1) {
             // 今日が15日より先だったら
             if (day > 15){
               if(i < 16){
+                $('.date').append(`<div class="day-${i} row my-2"></div>`);
                 $(`.day-${i}`).append(
                   `<label for="text" name="day-${i}">${i}日：</label>`,
                   `<input class="col-4" type="text" list="data-list" name="day-start-${i}" step="1800"/>`,
@@ -86,6 +86,7 @@
               }
             } else {
               if(i > 15){
+                $('.date').append(`<div class="day-${i} row my-2"></div>`);
                 $(`.day-${i}`).append(
                   `<label for="text" name="day-${i}">${i}日：</label>`,
                   `<input class="col-4" type="text" list="data-list" name="day-start-${i}" step="1800"/>`,
