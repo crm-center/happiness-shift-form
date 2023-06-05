@@ -10,10 +10,9 @@
 </head>
 <body>
   <form class="w-75 mx-auto">
-    <input type="time" list="data-list" name="day-31" step="1800"/><span></span>
     <p class="mt-3">備考</p>
     <div>
-        <input class="form-control w-100 mt-1" name="bikou" placeholder="" required>
+        <textarea class="form-control w-100 mt-1" name="bikou" placeholder="" required>
     </div>
     <datalist id="data-list">
       <option value="09:00"></option>
@@ -71,7 +70,7 @@
     const lastday = new Date(today.getFullYear(), today.getMonth() + 1, 0)
     
     liff.init({
-      liffId: '**********-********'
+      liffId: '1661326584-85YGYPYw'
     }).catch((err) => {
       console.log(err);
     });
@@ -102,7 +101,7 @@
 
     $('form').submit(function( event ) {
       event.preventDefault();
-      $.post( 'https://*******************', $('form').serialize() );
+      $.post( 'https://liff.line.me/1661326584-85YGYPYw', $('form').serialize() );
     });
   </script>
 </body>
