@@ -10,7 +10,7 @@
 </head>
 <body>
   <form class="w-75 mx-auto">
-    <p>test1</p>
+    <p>test2</p>
     <div class='date'><div>
     <div class='bikou'></div>
     <input type="submit" class="mt-4 btn btn-primary" value="送信">
@@ -87,7 +87,8 @@
                 $('.date').append(
                   `<label for="time" name="day-${i}">${i}日：</label>`,
                   `<input type="text" list="data-list" name="day-${i}" step="1800"/>`,
-                  `<input type="time" list="data-list" name="day-${i}" step="1800"/>`
+                  `<p>〜</p>`,
+                  `<input type="" list="data-list" name="day-${i}" step="1800"/>`
                 );
               } 
             }
