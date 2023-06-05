@@ -12,7 +12,10 @@
   <form class="w-75 mx-auto">
     <p>test5</p>
     <div class='date'><div>
-    <div class='bikou'></div>
+    <p class="mt-3">備考</p>
+    <div class='bikou'>
+      <textarea class="form-control w-100 mt-1" name="bikou" placeholder=""rows="5"></textarea>
+    </div>
     <input type="submit" class="mt-4 btn btn-primary" value="送信">
       <datalist id="data-list">
       <option value="0900"></option>
@@ -96,17 +99,13 @@
               } 
             }
           }
-          $('.bikou').append(
-            `<p class="mt-3">備考</p>`,
-            `<textarea class="form-control w-100 mt-1" name="bikou" placeholder=""rows="5"></textarea>`
-          );
         })
 
         function initializeLiff(liffId) {
             liff.init({
                 liffId: liffId
             }).then(() => {
-//                 initializeApp();
+                initializeApp();
             }).catch((err) => {
                 console.log('LIFF Initialization failed ', err);
             });
@@ -132,7 +131,7 @@
                 let has_date = false;
                 for (let i = 1; i < lastday.getDate() + 1; i += 1) {
                   if($('[name=day-start-${i}]').val() && $('[name=day-end-${i}]').val()){
-                    msg += `\n${i}日: $('[name=day-start-${i}]').val() ~ $('[name=day-end-${i}]').val()`
+                    msg += `\n${i}日: $('[name=day-start-${i}]').val() ~ $('[name=day-end-${i}]').val()`;
                     has_date = true;
                   }
                 }
