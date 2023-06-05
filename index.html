@@ -72,8 +72,8 @@
      $(document).ready(function () {
          const liffId = "1661205911-9ydyRaqK";
          initializeLiff(liffId);
+         $('.date').append(`<div class="day-${i} row my-2"></div>`);
          for (let i = 1; i < lastday.getDate() + 1; i += 1) {
-           $('.date').append(`<div class="day-${i} row my-2"></div>`);
             // 今日が15日より先だったら
             if (day > 15){
               if(i < 16){
