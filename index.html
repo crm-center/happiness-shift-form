@@ -78,14 +78,16 @@
               if(i < 16){
                 $('.date').append(
                   `<label for="time" name="day-${i}">${i}日：</label>`,
-                  `<input type="text" list="data-list" name="day-${i}" step="1800"/>`
+                  `<input type="text" list="data-list" name="day-${i}" step="1800"/>`,
+                  `<input type="time" list="data-list" name="day-${i}" step="1800"/>`
                 );
               }
             } else {
               if(i > 15){
                 $('.date').append(
                   `<label for="time" name="day-${i}">${i}日：</label>`,
-                  `<input type="text" list="data-list" name="day-${i}" step="1800"/>`
+                  `<input type="text" list="data-list" name="day-${i}" step="1800"/>`,
+                  `<input type="time" list="data-list" name="day-${i}" step="1800"/>`
                 );
               } 
             }
