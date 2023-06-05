@@ -10,7 +10,7 @@
 </head>
 <body>
   <form class="w-75 mx-auto">
-    <p>test4</p>
+    <p>test5</p>
     <div class='date'><div>
     <div class='bikou'></div>
     <input type="submit" class="mt-4 btn btn-primary" value="送信">
@@ -73,7 +73,7 @@
          const liffId = "1661205911-9ydyRaqK";
          initializeLiff(liffId);
          for (let i = 1; i < lastday.getDate() + 1; i += 1) {
-           $('.date').append(`<div class="day-${i}"></div>`);
+           $('.date').append(`<div class="day-${i} row"></div>`);
             // 今日が15日より先だったら
             if (day > 15){
               if(i < 16){
