@@ -129,12 +129,12 @@
             $('form').submit(function () {
                 let msg = 'シフト希望：'
                 let has_date = false;
-                for (let i = 1; i < lastday.getDate() + 1; i += 1) {
-                  if($('[name=day-start-${i}]').val() && $('[name=day-end-${i}]').val()){
-                    msg += `\n${i}日: $('[name=day-start-${i}]').val() ~ $('[name=day-end-${i}]').val()`;
-                    has_date = true;
-                  }
-                }
+//                 for (let i = 1; i < lastday.getDate() + 1; i += 1) {
+//                   if($('[name=day-start-${i}]').val() && $('[name=day-end-${i}]').val()){
+//                     msg += `\n${i}日: $('[name=day-start-${i}]').val() ~ $('[name=day-end-${i}]').val()`;
+//                     has_date = true;
+//                   }
+//                 }
                 if(has_date){
                   const message = msg;
                 } else {
