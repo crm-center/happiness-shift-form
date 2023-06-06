@@ -10,7 +10,7 @@
 </head>
 <body>
   <form class="w-75 mx-auto">
-    <p>test</p>
+    <p>test1</p>
     <div class='date'></div>
     <div class='bikou'>
       <p class="mt-3">備考</p>
@@ -132,7 +132,7 @@
                 for (let i = 1; i < lastday.getDate() + 1; i += 1) {
                   if($('[name=day-start-${i}]').val() && $('[name=day-end-${i}]').val()){
                     msg = msg + `\n${i}日: $('[name=day-start-${i}]').val() ~ $('[name=day-end-${i}]').val()`;
-                    has_date = true;
+//                     has_date = true;
                   }
                 }
                 let message = has_date ? msg : 'シフトの希望がありませんでした。';
