@@ -77,20 +77,20 @@
           if(i < 16){
             $('.date').append(`<div class="day-${i} row my-2"></div>`);
             $(`.day-${i}`).append(
-              `<label for="text" name="day-${i}">${i}日：</label>`,
-              `<input class="col-4" type="text" list="data-list" name="day-start-${i}" step="1800"/>`,
+              `<label for="day-${i}" name="day-${i}">${i}日：</label>`,
+              `<input class="col-4" type="text" list="data-list" name="day-start-${i}" id="day-${i}" step="1800"/>`,
               `<p>〜</p>`,
-              `<input class="col-4" type="text" list="data-list" name="day-end-${i}" step="1800"/>`
+              `<input class="col-4" type="text" list="data-list" name="day-end-${i}" id="day-${i}" step="1800"/>`
             );
           }
         } else {
           if(i > 15){
             $('.date').append(`<div class="day-${i} row my-2"></div>`);
             $(`.day-${i}`).append(
-              `<label for="text" name="day-${i}">${i}日：</label>`,
-              `<input class="col-4" type="text" list="data-list" name="day-start-${i}" step="1800"/>`,
+              `<label for="day-${i}" name="day-${i}">${i}日：</label>`,
+              `<input class="col-4" type="text" list="data-list" name="day-start-${i}" id="day-${i}" step="1800"/>`,
               `<p class="mx-2 my-auto">〜</p>`,
-              `<input class="col-4" type="text" list="data-list" name="day-end-${i}" step="1800"/>`
+              `<input class="col-4" type="text" list="data-list" name="day-end-${i}" id="day-${i}" step="1800"/>`
             );
           } 
         }
@@ -129,12 +129,12 @@
             $('form').submit(function () {
                 let msg = 'シフト希望：'
                 let has_date = false;
-//                 for (let i = 1; i < lastday.getDate() + 1; i += 1) {
-//                   if($('[name=day-start-${i}]').val() && $('[name=day-end-${i}]').val()){
-//                     msg += `\n${i}日: $('[name=day-start-${i}]').val() ~ $('[name=day-end-${i}]').val()`;
-//                     has_date = true;
-//                   }
-//                 }
+                for (let i = 1; i < lastday.getDate() + 1; i += 1) {
+                  if($('[name=day-start-${i}]').val() && $('[name=day-end-${i}]').val()){
+                    msg += `\n${i}日: $('[name=day-start-${i}]').val() ~ $('[name=day-end-${i}]').val()`;
+                    has_date = true;
+                  }
+                }
                 let message = has_date ? msg : 'シフトの希望がありませんでした。';
                 sendText(message);
                 return false;
