@@ -10,7 +10,7 @@
 </head>
 <body>
   <form class="w-75 mx-auto">
-    <p>test2</p>
+    <p>test3</p>
     <div class='date'></div>
     <div class='bikou'>
       <p class="mt-3">備考</p>
@@ -134,7 +134,7 @@
 //                     msg = msg + `\n${i}日: $('[name=day-start-${i}]').val() ~ $('[name=day-end-${i}]').val()`;
 //                     has_date = true;
 //                   }
-                  msg = $('[name=day-start-${i}]').val();
+                  msg = $(`[name=day-start-${i}]`).val();
                   has_date = true;
                 }
                 let message = has_date ? msg : 'シフトの希望がありませんでした。';
