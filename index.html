@@ -10,7 +10,7 @@
 </head>
 <body>
   <form class="w-75 mx-auto">
-    <p>test7</p>
+    <p>test</p>
     <div class='date'></div>
     <div class='bikou'>
       <p class="mt-3">備考</p>
@@ -129,12 +129,12 @@
             $('form').submit(function () {
                 let msg = 'シフト希望：'
                 let has_date = false;
-//                 for (let i = 1; i < lastday.getDate() + 1; i += 1) {
-//                   if($('[name=day-start-${i}]').val() && $('[name=day-end-${i}]').val()){
-//                     msg += `\n${i}日: $('[name=day-start-${i}]').val() ~ $('[name=day-end-${i}]').val()`;
-//                     has_date = true;
-//                   }
-//                 }
+                for (let i = 1; i < lastday.getDate() + 1; i += 1) {
+                  if($('[name=day-start-${i}]').val() && $('[name=day-end-${i}]').val()){
+                    msg = msg + `\n${i}日: $('[name=day-start-${i}]').val() ~ $('[name=day-end-${i}]').val()`;
+                    has_date = true;
+                  }
+                }
                 let message = has_date ? msg : 'シフトの希望がありませんでした。';
                 sendText(message);
                 return false;
