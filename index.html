@@ -135,11 +135,7 @@
 //                     has_date = true;
 //                   }
 //                 }
-                if(has_date){
-                  const message = msg;
-                } else {
-                  const message = 'シフトの希望がありませんでした。';
-                }
+                let message = has_date ? msg : 'シフトの希望がありませんでした。';
                 sendText(message);
                 return false;
             });
