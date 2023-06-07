@@ -17,49 +17,6 @@
       <textarea class="form-control w-100 mt-1" name="bikou" placeholder=""rows="5"></textarea>
     </div>
     <input type="submit" class="mt-4 btn btn-primary" value="送信">
-      <datalist id="data-list">
-      <option value="09:00"></option>
-      <option value="09:30"></option>
-      <option value="10:00"></option>
-      <option value="10:30"></option>
-      <option value="11:00"></option>
-      <option value="11:30"></option>
-      <option value="12:00"></option>
-      <option value="12:30"></option>
-      <option value="13:00"></option>
-      <option value="13:30"></option>
-      <option value="14:00"></option>
-      <option value="14:30"></option>
-      <option value="15:00"></option>
-      <option value="15:30"></option>
-      <option value="16:00"></option>
-      <option value="16:30"></option>
-      <option value="17:00"></option>
-      <option value="17:30"></option>
-      <option value="18:00"></option>
-      <option value="18:30"></option>
-      <option value="19:00"></option>
-      <option value="19:30"></option>
-      <option value="20:00"></option>
-      <option value="20:30"></option>
-      <option value="21:00"></option>
-      <option value="21:30"></option>
-      <option value="22:00"></option>
-      <option value="22:30"></option>
-      <option value="23:00"></option>
-      <option value="23:30"></option>
-      <option value="24:00"></option>
-      <option value="24:30"></option>
-      <option value="25:00"></option>
-      <option value="25:30"></option>
-      <option value="26:00"></option>
-      <option value="26:30"></option>  
-      <option value="27:00"></option>
-      <option value="27:30"></option>  
-      <option value="28:00"></option>
-      <option value="28:30"></option>  
-      <option value="29:00"></option>
-    </datalist>
   </form>
 
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
@@ -78,9 +35,9 @@
             $('.date').append(`<div class="day-${i} row my-2"></div>`);
             $(`.day-${i}`).append(
               `<label for="day-${i}" name="day-${i}">${i}日：</label>`,
-              `<input class="col-4" type="text" list="data-list" name="day-start-${i}" id="day-${i}" step="1800"/>`,
+              `<input class="col-4" type="time" name="day-start-${i}" id="day-${i}" step="1800"/>`,
               `<p>〜</p>`,
-              `<input class="col-4" type="text" list="data-list" name="day-end-${i}" id="day-${i}" step="1800"/>`
+              `<input class="col-4" type="time" name="day-end-${i}" id="day-${i}" step="1800"/>`
             );
           }
         } else {
@@ -88,9 +45,9 @@
             $('.date').append(`<div class="day-${i} row my-2"></div>`);
             $(`.day-${i}`).append(
               `<label for="day-${i}" name="day-${i}">${i}日：</label>`,
-              `<input class="col-4" type="text" list="data-list" name="day-start-${i}" id="day-${i}" step="1800"/>`,
+              `<input class="col-4" type="time" name="day-start-${i}" id="day-${i}" step="1800"/>`,
               `<p class="mx-2 my-auto">〜</p>`,
-              `<input class="col-4" type="time" list="data-list" name="day-end-${i}" id="day-${i}" step="1800"/>`
+              `<input class="col-4" type="time" name="day-end-${i}" id="day-${i}" step="1800"/>`
             );
           } 
         }
