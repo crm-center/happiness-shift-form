@@ -10,7 +10,7 @@
 </head>
 <body>
   <form class="w-75 mx-auto">
-    <p>test7</p>
+    <p>test8</p>
     <div class='date'></div>
     <div class='bikou'>
       <p class="mt-3">備考</p>
@@ -131,7 +131,9 @@
                 let has_date = false;
                 for (let i = 1; i < lastday.getDate() + 1; i += 1) {
                   if($('[name="day-start-' + i + '"]').val() && $('[name="day-end-' + i + '"]').val()){
-                    msg = msg + `\n${i}日: $('[name="day-start-' + i + '"]').val() ~ $('[name="day-start-' + i + '"]').val()`;
+                    const start_time = $('[name="day-start-' + i + '"]').val();
+                    const end_time = $('[name="day-end-' + i + '"]').val();
+                    msg = msg + `\n${i}日: ${start_time}~${end_time}`;
                     has_date = true;
                   }
                 }
