@@ -10,7 +10,7 @@
 </head>
 <body>
   <form class="w-75 mx-auto">
-    <p>test8</p>
+    <p>test9</p>
     <div class='date'></div>
     <div class='bikou'>
       <p class="mt-3">備考</p>
@@ -35,9 +35,9 @@
             $('.date').append(`<div class="day-${i} row my-2"></div>`);
             $(`.day-${i}`).append(
               `<label for="day-${i}" name="day-${i}">${i}日：</label>`,
-              `<input class="col-4" type="time" name="day-start-${i}" id="day-${i}" step="1800"/>`,
+              `<input class="col-3" type="time" name="day-start-${i}" id="day-${i}" step="1800"/>`,
               `<p>〜</p>`,
-              `<input class="col-4" type="time" name="day-end-${i}" id="day-${i}" step="1800"/>`
+              `<input class="col-3" type="time" name="day-end-${i}" id="day-${i}" step="1800"/>`
             );
           }
         } else {
@@ -45,9 +45,9 @@
             $('.date').append(`<div class="day-${i} row my-2"></div>`);
             $(`.day-${i}`).append(
               `<label for="day-${i}" name="day-${i}">${i}日：</label>`,
-              `<input class="col-4" type="time" name="day-start-${i}" id="day-${i}" step="1800"/>`,
+              `<input class="col-3" type="time" name="day-start-${i}" id="day-${i}" step="1800"/>`,
               `<p class="mx-2 my-auto">〜</p>`,
-              `<input class="col-4" type="time" name="day-end-${i}" id="day-${i}" step="1800"/>`
+              `<input class="col-3" type="time" name="day-end-${i}" id="day-${i}" step="1800"/>`
             );
           } 
         }
