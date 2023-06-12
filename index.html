@@ -28,33 +28,54 @@
     const today = new Date();
     const day = today.getDate();
     const lastday = new Date(today.getFullYear(), today.getMonth() + 1, 0);
-    for (let i = 1; i < lastday.getDate() + 1; i += 1) {
-        // 今日が15日より先だったら
-        if (day > 15){
-          if(i < 16){
-            $('.date').append(`<div class="day-${i} row my-2"></div>`);
-            $(`.day-${i}`).append(
-              `<label for="day-${i}" name="day-${i}">${i}日：</label>`,
-              `<input class="col-3" type="time" name="day-start-${i}" id="day-${i}" step="1800"/>`,
-              `<p>〜</p>`,
-              `<input class="col-3" type="time" name="day-end-${i}" id="day-${i}" step="1800"/>`,
-              `<label for="day-${i}" name="day-${i}">備考：</label>`,
-              `<input class="col-6 my-2" type="text" name="day-bikou-${i}" id="day-${i}" />`
-            );
-          }
-        } else {
-          if(i > 15){
-            $('.date').append(`<div class="day-${i} row my-2"></div>`);
-            $(`.day-${i}`).append(
-              `<label for="day-${i}" name="day-${i}">${i}日：</label>`,
-              `<input class="col-3" type="time" name="day-start-${i}" id="day-${i}" step="1800"/>`,
-              `<p class="mx-2 my-auto">〜</p>`,
-              `<input class="col-3" type="time" name="day-end-${i}" id="day-${i}" step="1800"/>`,
-              `<label for="day-${i}" name="day-${i}">備考：</label>`,
-              `<input class="col-6 my-2" type="text" name="day-bikou-${i}" id="day-${i}" />`
-            );
-          } 
-        }
+//     for (let i = 1; i < lastday.getDate() + 1; i += 1) {
+//         // 今日が15日より先だったら
+//         if (day > 15){
+//           if(i < 16){
+//             $('.date').append(`<div class="day-${i} row my-2"></div>`);
+//             $(`.day-${i}`).append(
+//               `<label for="day-${i}" name="day-${i}">${i}日：</label>`,
+//               `<input class="col-3" type="time" name="day-start-${i}" id="day-${i}" step="1800"/>`,
+//               `<p>〜</p>`,
+//               `<input class="col-3" type="time" name="day-end-${i}" id="day-${i}" step="1800"/>`,
+//               `<label for="day-${i}" name="day-${i}">備考：</label>`,
+//               `<input class="col-6 my-2" type="text" name="day-bikou-${i}" id="day-${i}" />`
+//             );
+//           }
+//         } else {
+//           if(i > 15){
+//             $('.date').append(`<div class="day-${i} row my-2"></div>`);
+//             $(`.day-${i}`).append(
+//               `<label for="day-${i}" name="day-${i}">${i}日：</label>`,
+//               `<input class="col-3" type="time" name="day-start-${i}" id="day-${i}" step="1800"/>`,
+//               `<p class="mx-2 my-auto">〜</p>`,
+//               `<input class="col-3" type="time" name="day-end-${i}" id="day-${i}" step="1800"/>`,
+//               `<label for="day-${i}" name="day-${i}">備考：</label>`,
+//               `<input class="col-6 my-2" type="text" name="day-bikou-${i}" id="day-${i}" />`
+//             );
+//           } 
+//         }
+//     }
+  const isAfter15th = day > 15;
+  const renderCondition = isAfter15th ? (i) => i < 16 : (i) => i > 15;
+
+  for (let i = 1; i < lastday.getDate() + 1; i++) {
+      if (renderCondition(i)) {
+        const $dayElement = $(`<div class="day-${i} row my-2"></div>`);
+        const $inputContainer = $('<div class="col-3 input-container"></div>');
+
+        $dayElement.append(
+          $inputContainer.append(
+            `<label for="day-${i}" name="day-${i}">${i}日：</label>`,
+            `<input class="col-12" type="time" name="day-start-${i}" id="day-${i}" step="1800"/>`,
+            `<p class="mx-2 my-auto">〜</p>`,
+            `<input class="col-12" type="time" name="day-end-${i}" id="day-${i}" step="1800"/>`
+          ),
+          `<label for="day-${i}" name="day-${i}">備考：</label>`,
+          `<input class="col-6 my-2" type="text" name="day-bikou-${i}" id="day-${i}" />`
+        );
+        $('.date').append($dayElement);
+      }
     }
     
      $(document).ready(function () {
