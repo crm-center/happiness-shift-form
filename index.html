@@ -56,27 +56,28 @@
 //           } 
 //         }
 //     }
-  const isAfter15th = day > 15;
-  const renderCondition = isAfter15th ? (i) => i < 16 : (i) => i > 15;
+const isAfter15th = day > 15;
+const renderCondition = isAfter15th ? (i) => i < 16 : (i) => i > 15;
 
-  for (let i = 1; i < lastday.getDate() + 1; i++) {
-      if (renderCondition(i)) {
-        const $dayElement = $(`<div class="day-${i} row my-2"></div>`);
-        const $inputContainer = $('<div class="col-3 input-container"></div>');
+for (let i = 1; i < lastday.getDate() + 1; i++) {
+  if (renderCondition(i)) {
+    const $dayElement = $(`<div class="day-${i} row my-2"></div>`);
+    const $inputContainer = $('<div class="col-12 input-container d-flex flex-column"></div>');
 
-        $dayElement.append(
-          $inputContainer.append(
-            `<label for="day-${i}" name="day-${i}">${i}日：</label>`,
-            `<input class="col-12" type="time" name="day-start-${i}" id="day-${i}" step="1800"/>`,
-            `<p class="mx-2 my-auto">〜</p>`,
-            `<input class="col-12" type="time" name="day-end-${i}" id="day-${i}" step="1800"/>`
-          ),
-          `<label for="day-${i}" name="day-${i}">備考：</label>`,
-          `<input class="col-6 my-2" type="text" name="day-bikou-${i}" id="day-${i}" />`
-        );
-        $('.date').append($dayElement);
-      }
-    }
+    $dayElement.append(
+      $inputContainer.append(
+        `<label for="day-${i}" name="day-${i}">${i}日：</label>`,
+        `<div class="d-flex">`,
+        `<input class="col-12" type="time" name="day-start-${i}" id="day-${i}" step="1800"/>`,
+        `<p class="mx-2 my-auto">〜</p>`,
+        `<input class="col-12" type="time" name="day-end-${i}" id="day-${i}" step="1800"/>`,
+        `</div>`
+      ),
+      `<label for="day-${i}" name="day-${i}">備考：</label>`,
+      `<input class="col-6 my-2" type="text" name="day-bikou-${i}" id="day-${i}" />`
+    );
+    $('.date').append($dayElement);
+  }
     
      $(document).ready(function () {
          const liffId = "1661326584-85YGYPYw";
