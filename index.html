@@ -67,19 +67,19 @@ for (let i = 1; i < lastday.getDate() + 1; i++) {
     const $timeContainer = $('<div class="d-flex flex-column"></div>');
     const $timeInnerContainer = $('<div class="d-flex"></div>');
     $timeInnerContainer.append(
-      `<input class="col-12" type="time" name="day-start-${i}" id="day-${i}" step="1800"/>`,
-      `<p class="mx-2 my-auto">〜</p>`,
-      `<input class="col-12" type="time" name="day-end-${i}" id="day-${i}" step="1800"/>`
+      `<input class="col-6" type="time" name="day-start-${i}" id="day-${i}" step="1800"/>`,
+      `<p class="mx-1 my-auto">〜</p>`,
+      `<input class="col-6" type="time" name="day-end-${i}" id="day-${i}" step="1800"/>`
     );
     $timeContainer.append(
       `<label for="day-${i}" name="day-${i}">${i}日：</label>`,
       $timeInnerContainer
     );
 
-    const $bikouContainer = $('<div class="d-flex flex-column"></div>');
+    const $bikouContainer = $('<div class="d-flex flex-column my-1"></div>');
     $bikouContainer.append(
       `<label for="day-${i}" name="day-${i}">備考：</label>`,
-      `<input class="col-6 my-2" type="text" name="day-bikou-${i}" id="day-${i}" />`
+      `<input class="col-12" type="text" name="day-bikou-${i}" id="day-${i}" />`
     );
 
     $inputContainer.append($timeContainer, $bikouContainer);
