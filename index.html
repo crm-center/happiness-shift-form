@@ -135,7 +135,8 @@ for (let i = 1; i < lastday.getDate() + 1; i++) {
                     has_date = true;
                   }
                   if($('[name="day-bikou-' + i + '"]').val()){
-                    bikou = bikou + `\n${i}日: $('[name="day-bikou-' + i + '"]').val()`;
+                    const bikou_text = $('[name="day-bikou-' + i + '"]').val();
+                    bikou = bikou + `\n${i}日: ${bikou_text}`;
                   }
                 }
                 let message = has_date ? msg : msg +`\nなし`;
