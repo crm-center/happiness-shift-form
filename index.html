@@ -12,10 +12,6 @@
   <form class="w-75 mx-auto">
     <p>シフト希望入力フォーム</p>
     <div class='date'></div>
-    <div class='bikou'>
-      <p class="mt-3">備考</p>
-      <textarea class="form-control w-100 mt-1" name="bikou" placeholder=""rows="5"></textarea>
-    </div>
     <input type="submit" class="mt-4 btn btn-primary" value="送信">
   </form>
 
@@ -81,14 +77,14 @@ for (let i = 1; i < lastday.getDate() + 1; i++) {
       `<input class="col-5" type="time" name="day-end-${i}" id="day-${i}" step="1800"/>`
     );
     $timeContainer.append(
-      `<label for="day-${i}" name="day-${i}">${date}：：</label>`,
+      `<label for="day-${i}" name="day-${i}">${date}：</label>`,
       $timeInnerContainer
     );
 
     const $bikouContainer = $('<div class="d-flex flex-column my-1"></div>');
     $bikouContainer.append(
       `<label for="day-${i}" name="day-${i}">備考：</label>`,
-      `<input class="col-11" type="text" name="day-bikou-${i}" id="day-${i}" />`
+      `<input class="col-12" type="text" name="day-bikou-${i}" id="day-${i}" />`
     );
 
     $inputContainer.append($timeContainer, $bikouContainer);
@@ -128,7 +124,8 @@ for (let i = 1; i < lastday.getDate() + 1; i++) {
 
         $(function () {
             $('form').submit(function () {
-                let msg = 'シフト希望：'
+                let msg = 'シフト希望：';
+                let bikou = '備考：';
                 let has_date = false;
                 for (let i = 1; i < lastday.getDate() + 1; i += 1) {
                   if($('[name="day-start-' + i + '"]').val() && $('[name="day-end-' + i + '"]').val()){
@@ -137,8 +134,12 @@ for (let i = 1; i < lastday.getDate() + 1; i++) {
                     msg = msg + `\n${i}日: ${start_time}~${end_time}`;
                     has_date = true;
                   }
+                  if($('[name="day-bikou-' + i + '"]').val()){
+                    bikou = bikou + `\n${i}日: $('[name="day-bikou-' + i + '"]').val()`;
+                  }
                 }
-                let message = has_date ? msg : 'シフトの希望がありませんでした。';
+                let message = has_date ? msg : msg +`\nなし`;
+                message = bikou === '備考：' ? message + `\n\n` + bikou + `\nなし` : message + `\n\n` + bikou;
                 sendText(message);
                 return false;
             });
