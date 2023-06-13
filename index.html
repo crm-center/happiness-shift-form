@@ -65,11 +65,15 @@ for (let i = 1; i < lastday.getDate() + 1; i++) {
     const $inputContainer = $('<div class="col-12 input-container"></div>');
 
     const $timeContainer = $('<div class="d-flex flex-column"></div>');
-    $timeContainer.append(
-      `<label for="day-${i}" name="day-${i}">${i}日：</label>`,
+    const $timeInnerContainer = $('<div class="d-flex"></div>');
+    $timeInnerContainer.append(
       `<input class="col-12" type="time" name="day-start-${i}" id="day-${i}" step="1800"/>`,
       `<p class="mx-2 my-auto">〜</p>`,
       `<input class="col-12" type="time" name="day-end-${i}" id="day-${i}" step="1800"/>`
+    );
+    $timeContainer.append(
+      `<label for="day-${i}" name="day-${i}">${i}日：</label>`,
+      $timeInnerContainer
     );
 
     const $bikouContainer = $('<div class="d-flex flex-column"></div>');
