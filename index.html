@@ -140,7 +140,7 @@ for (let i = 1; i < lastday.getDate() + 1; i++) {
                   }
                 }
                 let message = has_date ? msg : msg +`\nなし`;
-                message = bikou === '備考：' ? message + `\n\n` + bikou + `\nなし` : message + `\n\n` + bikou;
+                message = bikou === '備考：' ? message + `\n` + bikou + `\nなし` : message + `\n` + bikou;
                 sendText(message);
                 return false;
             });
