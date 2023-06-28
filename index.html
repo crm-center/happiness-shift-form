@@ -61,12 +61,14 @@ function getWeekday(year, month, day) {
   return weekdays[weekdayIndex];
 }
 
-const isAfter15th = day > 15;
-const renderCondition = isAfter15th ? (i) => i < 16 : (i) => i > 15;
+const isBetween1stAnd10th = day >= 1 && day < 10;
+const isBetween10thAnd25th = day >= 10 && day < 25;
+const isAfter25th = day >= 25;
+const renderCondition = isBetween1stAnd10th ? (i) => i >= 16 && i <= lastday.getDate() : (isBetween10thAnd25th ? (i) => i >= 1 && i <= 15 : (i) => i >= 16 && i <= lastday.getDate());
 
-for (let i = 1; i < lastday.getDate() + 1; i++) {
+for (let i = 1; i <= lastday.getDate(); i++) {
   if (renderCondition(i)) {
-    const month = isAfter15th ? today.getMonth() + 2 : today.getMonth() + 1;
+    const month = isBetween1stAnd10th ? today.getMonth() + 2 : (isAfter25th ? today.getMonth() + 2 : today.getMonth() + 1);
     const date = `${i}日（${getWeekday(today.getFullYear(), month, i)}）`;
     const $dayElement = $(`<div class="day-${i} row my-2"></div>`);
     const $inputContainer = $('<div class="col-12 input-container"></div>');
