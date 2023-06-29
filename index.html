@@ -41,8 +41,13 @@
         : isBetween10thAnd25th
         ? (i) => i >= 1 && i <= 15
         : (i) => i >= 16 && i <= lastday.getDate();
+
+  let monthDays = renderCondition(1) ? lastday.getDate() : 0;
+  if (isBetween1stAnd10th) {
+    monthDays = new Date(today.getFullYear(), today.getMonth() + 1, 0).getDate();
+  }
     
-    for (let i = 1; i <= lastday.getDate(); i++) {
+    for (let i = 1; i <= monthDays; i++) {
       if (renderCondition(i)) {
         const month =
           isBetween1stAnd10th
