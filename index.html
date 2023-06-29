@@ -23,7 +23,7 @@
   <script>
     const today = new Date();
     const day = today.getDate();
-    const lastday = new Date(today.getFullYear(), today.getMonth() + 1, 0);
+const lastday = new Date(today.getFullYear(), today.getMonth() + 1, 0);
 
 function getWeekday(year, month, day) {
   const weekdays = ["日", "月", "火", "水", "木", "金", "土"];
@@ -35,31 +35,12 @@ function getWeekday(year, month, day) {
 const isBetween1stAnd10th = day >= 1 && day < 10;
 const isBetween10thAnd25th = day >= 10 && day < 25;
 const isAfter25th = day >= 25;
-const renderCondition =
-  isBetween1stAnd10th
-    ? (i) => i >= 16 && i <= lastday.getDate()
-    : isBetween10thAnd25th
-    ? (i) => i >= 1 && i <= 15
-    : (i) =>
-        i >= 16 &&
-        i <=
-          (isAfter25th
-            ? new Date(today.getFullYear(), today.getMonth() + 2, 0).getDate()
-            : lastday.getDate());
+const renderCondition = isBetween1stAnd10th ? (i) => i >= 16 && i <= lastday.getDate() : (isBetween10thAnd25th ? (i) => i >= 1 && i <= 15 : (i) => i >= 16 && i <= lastday.getDate());
+const monthLastDay = isBetween1stAnd10th ?  new Date(today.getFullYear(), today.getMonth() + 1, 0) :  new Date(today.getFullYear(), today.getMonth() + 2, 0);  
 
-let monthDays = renderCondition(1) ? lastday.getDate() : 0;
-if (isBetween1stAnd10th) {
-  monthDays = new Date(today.getFullYear(), today.getMonth() + 1, 0).getDate();
-}
-
-for (let i = 1; i <= monthDays; i++) {
+for (let i = 1; i <= monthLastDay.getDate(); i++) {
   if (renderCondition(i)) {
-    const month =
-      isBetween1stAnd10th
-        ? today.getMonth() + 1
-        : isAfter25th
-        ? today.getMonth() + 2
-        : today.getMonth() + 1;
+    const month = isBetween1stAnd10th ? today.getMonth() + 2 : (isAfter25th ? today.getMonth() + 2 : today.getMonth() + 1);
     const date = `${i}日（${getWeekday(today.getFullYear(), month, i)}）`;
     const $dayElement = $(`<div class="day-${i} row my-2"></div>`);
     const $inputContainer = $('<div class="col-12 input-container"></div>');
@@ -87,6 +68,8 @@ for (let i = 1; i <= monthDays; i++) {
     $('.date').append($dayElement);
   }
 }
+
+これだと今日の場合来月の16日〜末日が表示されるはずですが、来月の16日~30日までと表示されます。来月は31日までです。修正してください。
     
  $(document).ready(function () {
      const liffId = "1661326584-85YGYPYw";
