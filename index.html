@@ -24,77 +24,59 @@
     const today = new Date();
     const day = today.getDate();
     const lastday = new Date(today.getFullYear(), today.getMonth() + 1, 0);
-//     for (let i = 1; i < lastday.getDate() + 1; i += 1) {
-//         // 今日が15日より先だったら
-//         if (day > 15){
-//           if(i < 16){
-//             $('.date').append(`<div class="day-${i} row my-2"></div>`);
-//             $(`.day-${i}`).append(
-//               `<label for="day-${i}" name="day-${i}">${i}日：</label>`,
-//               `<input class="col-3" type="time" name="day-start-${i}" id="day-${i}" step="1800"/>`,
-//               `<p>〜</p>`,
-//               `<input class="col-3" type="time" name="day-end-${i}" id="day-${i}" step="1800"/>`,
-//               `<label for="day-${i}" name="day-${i}">備考：</label>`,
-//               `<input class="col-6 my-2" type="text" name="day-bikou-${i}" id="day-${i}" />`
-//             );
-//           }
-//         } else {
-//           if(i > 15){
-//             $('.date').append(`<div class="day-${i} row my-2"></div>`);
-//             $(`.day-${i}`).append(
-//               `<label for="day-${i}" name="day-${i}">${i}日：</label>`,
-//               `<input class="col-3" type="time" name="day-start-${i}" id="day-${i}" step="1800"/>`,
-//               `<p class="mx-2 my-auto">〜</p>`,
-//               `<input class="col-3" type="time" name="day-end-${i}" id="day-${i}" step="1800"/>`,
-//               `<label for="day-${i}" name="day-${i}">備考：</label>`,
-//               `<input class="col-6 my-2" type="text" name="day-bikou-${i}" id="day-${i}" />`
-//             );
-//           } 
-//         }
-//     }
+
+    function getWeekday(year, month, day) {
+      const weekdays = ["日", "月", "火", "水", "木", "金", "土"];
+      const date = new Date(year, month - 1, day);
+      const weekdayIndex = date.getDay();
+      return weekdays[weekdayIndex];
+    }
     
-function getWeekday(year, month, day) {
-  const weekdays = ["日", "月", "火", "水", "木", "金", "土"];
-  const date = new Date(year, month - 1, day);
-  const weekdayIndex = date.getDay();
-  return weekdays[weekdayIndex];
-}
-
-const isBetween1stAnd10th = day >= 1 && day < 10;
-const isBetween10thAnd25th = day >= 10 && day < 25;
-const isAfter25th = day >= 25;
-const renderCondition = isBetween1stAnd10th ? (i) => i >= 16 && i <= lastday.getDate() : (isBetween10thAnd25th ? (i) => i >= 1 && i <= 15 : (i) => i >= 16 && i <= lastday.getDate());
-
-for (let i = 1; i <= lastday.getDate(); i++) {
-  if (renderCondition(i)) {
-    const month = isBetween1stAnd10th ? today.getMonth() + 2 : (isAfter25th ? today.getMonth() + 2 : today.getMonth() + 1);
-    const date = `${i}日（${getWeekday(today.getFullYear(), month, i)}）`;
-    const $dayElement = $(`<div class="day-${i} row my-2"></div>`);
-    const $inputContainer = $('<div class="col-12 input-container"></div>');
-
-    const $timeContainer = $('<div class="d-flex flex-column"></div>');
-    const $timeInnerContainer = $('<div class="d-flex"></div>');
-    $timeInnerContainer.append(
-      `<input class="col-5" type="time" name="day-start-${i}" id="day-${i}"/>`,
-      `<p class="mx-1 my-auto">〜</p>`,
-      `<input class="col-5" type="time" name="day-end-${i}" id="day-${i}" />`
-    );
-    $timeContainer.append(
-      `<label for="day-${i}" name="day-${i}">${date}：</label>`,
-      $timeInnerContainer
-    );
-
-    const $bikouContainer = $('<div class="d-flex flex-column my-1"></div>');
-    $bikouContainer.append(
-      `<label for="day-${i}" name="day-${i}">備考：</label>`,
-      `<input class="col-12" type="text" name="day-bikou-${i}" id="day-${i}" />`
-    );
-
-    $inputContainer.append($timeContainer, $bikouContainer);
-    $dayElement.append($inputContainer);
-    $('.date').append($dayElement);
-  }
-}
+    const isBetween1stAnd10th = day >= 1 && day < 10;
+    const isBetween10thAnd25th = day >= 10 && day < 25;
+    const isAfter25th = day >= 25;
+    const renderCondition =
+      isBetween1stAnd10th
+        ? (i) => i >= 16 && i <= lastday.getDate()
+        : isBetween10thAnd25th
+        ? (i) => i >= 1 && i <= 15
+        : (i) => i >= 16 && i <= lastday.getDate();
+    
+    for (let i = 1; i <= lastday.getDate(); i++) {
+      if (renderCondition(i)) {
+        const month =
+          isBetween1stAnd10th
+            ? today.getMonth() + 1
+            : isAfter25th
+            ? today.getMonth() + 2
+            : today.getMonth() + 1;
+        const date = `${i}日（${getWeekday(today.getFullYear(), month, i)}）`;
+        const $dayElement = $(`<div class="day-${i} row my-2"></div>`);
+        const $inputContainer = $('<div class="col-12 input-container"></div>');
+    
+        const $timeContainer = $('<div class="d-flex flex-column"></div>');
+        const $timeInnerContainer = $('<div class="d-flex"></div>');
+        $timeInnerContainer.append(
+          `<input class="col-5" type="time" name="day-start-${i}" id="day-${i}"/>`,
+          `<p class="mx-1 my-auto">〜</p>`,
+          `<input class="col-5" type="time" name="day-end-${i}" id="day-${i}" />`
+        );
+        $timeContainer.append(
+          `<label for="day-${i}" name="day-${i}">${date}：</label>`,
+          $timeInnerContainer
+        );
+    
+        const $bikouContainer = $('<div class="d-flex flex-column my-1"></div>');
+        $bikouContainer.append(
+          `<label for="day-${i}" name="day-${i}">備考：</label>`,
+          `<input class="col-12" type="text" name="day-bikou-${i}" id="day-${i}" />`
+        );
+    
+        $inputContainer.append($timeContainer, $bikouContainer);
+        $dayElement.append($inputContainer);
+        $('.date').append($dayElement);
+      }
+    }
     
  $(document).ready(function () {
      const liffId = "1661326584-85YGYPYw";
