@@ -35,8 +35,8 @@
     const isBetween1stAnd10th = day >= 1 && day < 10;
     const isBetween10thAnd25th = day >= 10 && day < 25;
     const isAfter25th = day >= 25;
-    const renderCondition = isBetween1stAnd10th ? (i) => i >= 16 && i <= lastday.getDate() : (isBetween10thAnd25th ? (i) => i >= 1 && i <= 15 : (i) => i >= 16 && i <= lastday.getDate());
     const monthLastDay = isBetween1stAnd10th ? new Date(today.getFullYear(), today.getMonth() + 1, 0) : new Date(today.getFullYear(), today.getMonth() + 2, 0);  
+    const renderCondition = isBetween1stAnd10th ? (i) => i >= 16 && i <= monthLastDay.getDate() : (isBetween10thAnd25th ? (i) => i >= 1 && i <= 15 : (i) => i >= 16 && i <= monthLastDay.getDate());
 
     for (let i = 1; i <= monthLastDay.getDate(); i++) {
       if (renderCondition(i)) {
