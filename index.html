@@ -23,53 +23,51 @@
   <script>
     const today = new Date();
     const day = today.getDate();
-const lastday = new Date(today.getFullYear(), today.getMonth() + 1, 0);
+    const lastday = new Date(today.getFullYear(), today.getMonth() + 1, 0);
 
-function getWeekday(year, month, day) {
-  const weekdays = ["日", "月", "火", "水", "木", "金", "土"];
-  const date = new Date(year, month - 1, day);
-  const weekdayIndex = date.getDay();
-  return weekdays[weekdayIndex];
-}
+    function getWeekday(year, month, day) {
+      const weekdays = ["日", "月", "火", "水", "木", "金", "土"];
+      const date = new Date(year, month - 1, day);
+      const weekdayIndex = date.getDay();
+      return weekdays[weekdayIndex];
+    }
 
-const isBetween1stAnd10th = day >= 1 && day < 10;
-const isBetween10thAnd25th = day >= 10 && day < 25;
-const isAfter25th = day >= 25;
-const renderCondition = isBetween1stAnd10th ? (i) => i >= 16 && i <= lastday.getDate() : (isBetween10thAnd25th ? (i) => i >= 1 && i <= 15 : (i) => i >= 16 && i <= lastday.getDate());
-const monthLastDay = isBetween1stAnd10th ?  new Date(today.getFullYear(), today.getMonth() + 1, 0) :  new Date(today.getFullYear(), today.getMonth() + 2, 0);  
+    const isBetween1stAnd10th = day >= 1 && day < 10;
+    const isBetween10thAnd25th = day >= 10 && day < 25;
+    const isAfter25th = day >= 25;
+    const renderCondition = isBetween1stAnd10th ? (i) => i >= 16 && i <= lastday.getDate() : (isBetween10thAnd25th ? (i) => i >= 1 && i <= 15 : (i) => i >= 16 && i <= lastday.getDate());
+    const monthLastDay = isBetween1stAnd10th ? new Date(today.getFullYear(), today.getMonth() + 1, 0) : new Date(today.getFullYear(), today.getMonth() + 2, 0);  
 
-for (let i = 1; i <= monthLastDay.getDate(); i++) {
-  if (renderCondition(i)) {
-    const month = isBetween1stAnd10th ? today.getMonth() + 2 : (isAfter25th ? today.getMonth() + 2 : today.getMonth() + 1);
-    const date = `${i}日（${getWeekday(today.getFullYear(), month, i)}）`;
-    const $dayElement = $(`<div class="day-${i} row my-2"></div>`);
-    const $inputContainer = $('<div class="col-12 input-container"></div>');
-
-    const $timeContainer = $('<div class="d-flex flex-column"></div>');
-    const $timeInnerContainer = $('<div class="d-flex"></div>');
-    $timeInnerContainer.append(
-      `<input class="col-5" type="time" name="day-start-${i}" id="day-${i}"/>`,
-      `<p class="mx-1 my-auto">〜</p>`,
-      `<input class="col-5" type="time" name="day-end-${i}" id="day-${i}" />`
-    );
-    $timeContainer.append(
-      `<label for="day-${i}" name="day-${i}">${date}：</label>`,
-      $timeInnerContainer
-    );
-
-    const $bikouContainer = $('<div class="d-flex flex-column my-1"></div>');
-    $bikouContainer.append(
-      `<label for="day-${i}" name="day-${i}">備考：</label>`,
-      `<input class="col-12" type="text" name="day-bikou-${i}" id="day-${i}" />`
-    );
-
-    $inputContainer.append($timeContainer, $bikouContainer);
-    $dayElement.append($inputContainer);
-    $('.date').append($dayElement);
-  }
-}
-
-これだと今日の場合来月の16日〜末日が表示されるはずですが、来月の16日~30日までと表示されます。来月は31日までです。修正してください。
+    for (let i = 1; i <= monthLastDay.getDate(); i++) {
+      if (renderCondition(i)) {
+        const month = isBetween1stAnd10th ? today.getMonth() + 2 : (isAfter25th ? today.getMonth() + 2 : today.getMonth() + 1);
+        const date = `${i}日（${getWeekday(today.getFullYear(), month, i)}）`;
+        const $dayElement = $(`<div class="day-${i} row my-2"></div>`);
+        const $inputContainer = $('<div class="col-12 input-container"></div>');
+    
+        const $timeContainer = $('<div class="d-flex flex-column"></div>');
+        const $timeInnerContainer = $('<div class="d-flex"></div>');
+        $timeInnerContainer.append(
+          `<input class="col-5" type="time" name="day-start-${i}" id="day-${i}"/>`,
+          `<p class="mx-1 my-auto">〜</p>`,
+          `<input class="col-5" type="time" name="day-end-${i}" id="day-${i}" />`
+        );
+        $timeContainer.append(
+          `<label for="day-${i}" name="day-${i}">${date}：</label>`,
+          $timeInnerContainer
+        );
+    
+        const $bikouContainer = $('<div class="d-flex flex-column my-1"></div>');
+        $bikouContainer.append(
+          `<label for="day-${i}" name="day-${i}">備考：</label>`,
+          `<input class="col-12" type="text" name="day-bikou-${i}" id="day-${i}" />`
+        );
+    
+        $inputContainer.append($timeContainer, $bikouContainer);
+        $dayElement.append($inputContainer);
+        $('.date').append($dayElement);
+      }
+    }
     
  $(document).ready(function () {
      const liffId = "1661326584-85YGYPYw";
