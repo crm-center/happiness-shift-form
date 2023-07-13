@@ -32,15 +32,15 @@
       return weekdays[weekdayIndex];
     }
 
-    const isBetween1stAnd10th = day >= 1 && day < 10;
-    const isBetween10thAnd25th = day >= 10 && day < 25;
+    const isBetween1stAnd13th = day >= 1 && day < 13;
+    const isBetween13thAnd25th = day >= 13 && day < 25;
     const isAfter25th = day >= 25;
-    const monthLastDay = isBetween1stAnd10th ? new Date(today.getFullYear(), today.getMonth() + 1, 0) : new Date(today.getFullYear(), today.getMonth() + 2, 0);  
-    const renderCondition = isBetween1stAnd10th ? (i) => i >= 16 && i <= monthLastDay.getDate() : (isBetween10thAnd25th ? (i) => i >= 1 && i <= 15 : (i) => i >= 16 && i <= monthLastDay.getDate());
+    const monthLastDay = isBetween1stAnd13th ? new Date(today.getFullYear(), today.getMonth() + 1, 0) : new Date(today.getFullYear(), today.getMonth() + 2, 0);  
+    const renderCondition = isBetween1stAnd13th ? (i) => i >= 16 && i <= monthLastDay.getDate() : (isBetween13thAnd25th ? (i) => i >= 1 && i <= 15 : (i) => i >= 16 && i <= monthLastDay.getDate());
 
     for (let i = 1; i <= monthLastDay.getDate(); i++) {
       if (renderCondition(i)) {
-        const month = isBetween1stAnd10th ? today.getMonth() + 1 : (isAfter25th ? today.getMonth() + 2 : today.getMonth() + 1);
+        const month = isBetween1stAnd13th ? today.getMonth() + 1 : today.getMonth() + 2;
         const date = `${i}日（${getWeekday(today.getFullYear(), month, i)}）`;
         const $dayElement = $(`<div class="day-${i} row my-2"></div>`);
         const $inputContainer = $('<div class="col-12 input-container"></div>');
