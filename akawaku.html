@@ -1,4 +1,3 @@
-## 赤枠希望のフォーム
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -18,7 +17,6 @@
     <div class='comment'>
       <label for="story">コメント:</label>
       <textarea id="comment" name="comment" rows="5" cols="33">
-      補足があれば！
       </textarea>
     </div>
     
@@ -130,8 +128,8 @@
   <option value="07:30">07:30</option>
   <option value="07:45">07:45</option>`;
 
-  const $startTimeContainer = $('<div class="d-flex"><select class="col-5" name="start_time_select" id="start_time_select">${option}</select></div>');
-  const $endTimeContainer = $('<div class="d-flex"><select class="col-5" name="end_time_select" id="end_time_select">${option}</select></div>');
+  const $startTimeContainer = $('<select class="" name="start_time_select" id="start_time_select">${option}</select>');
+  const $endTimeContainer = $('<select class="" name="end_time_select" id="end_time_select">${option}</select>');
   $('.start_time').append($startTimeContainer);
   $('.end_time').append($endTimeContainer);
 
