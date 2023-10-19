@@ -137,12 +137,11 @@ const end = parsedParams.end;
 
 const $timeInnerContainer = $('<div class="d-flex"></div>');
 $timeInnerContainer.append(
-    `<select class="col-5" name="start_time" id="start_time"><option value="${start}"></option>${option}</select>`,
+    `<select class="col-5" name="start_time" id="start_time"><option value="${start}" selected></option>${option}</select>`,
     `<p class="mx-1 my-auto">〜</p>`,
-    `<select class="col-5" name="end_time" id="end_time"><option value="${end}"></option>${option}</select>`,
+    `<select class="col-5" name="end_time" id="end_time"><option value="${end}" selected></option>${option}</select>`,
 );
     
-$('.date').append(`<p class="mx-1 my-auto">${date}</p>`);
 $('.time').append($timeInnerContainer);
 
 
