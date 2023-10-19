@@ -11,9 +11,8 @@
 <body>
   <form class="w-75 mx-auto">
     <h2>シフト希望入力フォーム</h2>
-    <div class='date'>日付: <input type="date" value="2021-12-01"></div>
-    <div class='start_time'></div>
-    <div class='end_time'></div>
+    <div class='date'>日時: <input type="date" value="2021-12-01"></div>
+    <div class='time'></div>
     <div class='comment'>
       <label for="story">コメント:</label>
       <textarea id="comment" name="comment" rows="5" cols="33">
@@ -128,10 +127,14 @@
   <option value="07:30">07:30</option>
   <option value="07:45">07:45</option>`;
 
-  const $startTimeContainer = $('<select class="" name="start_time_select" id="start_time_select">${option}</select>');
-  const $endTimeContainer = $('<select class="" name="end_time_select" id="end_time_select">${option}</select>');
-  $('.start_time').append($startTimeContainer);
-  $('.end_time').append($endTimeContainer);
+  const $timeInnerContainer = $('<div class="d-flex"></div>');
+  $timeInnerContainer.append(
+      `<select class="col-5" name="start_time" id="start_time">${option}</select>`,
+      `<p class="mx-1 my-auto">〜</p>`,
+      `<select class="col-5" name="end_time" id="end_time">${option}</select>`,
+  );
+    
+  $('.time').append($timeInnerContainer);
 
     
  $(document).ready(function () {
