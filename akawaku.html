@@ -11,7 +11,7 @@
 <body>
   <form class="w-75 mx-auto">
     <h2>赤枠希望</h2>
-    <p>出勤可能な時間に変更して提出してください。</p>
+    <p>※出勤可能な時間に変更して提出してください。</p>
     <div class='date my-2'>日付: <input type="date" value="2021-12-01"></div>
     <div class='time my-2'>時間:</div>
     <div class='comment my-2'>
@@ -134,6 +134,11 @@ const parsedParams = parseURLParameters(url);
 const date = parsedParams.date;
 const start = parsedParams.start;
 const end = parsedParams.end;
+
+console.log(parsedParams);
+console.log(date);
+console.log(start);
+console.log(end);
 
 const $timeInnerContainer = $('<div class="d-flex"></div>');
 $timeInnerContainer.append(
