@@ -142,7 +142,7 @@ $timeInnerContainer.append(
     `<select class="col-5" name="end_time" id="end_time"><option value="${end}" selected>${end}</option>${option}</select>`,
 );
     
-$('.date').append(`<p class="mx-1 my-auto">${date}</p> <input type="text" name="input_date" value="${date}" class="sample" disabled="disabled" />`,);
+$('.date').append(` <input type="text" name="input_date" value="${date}" class="sample" disabled="disabled" />`,);
 $('.time').append($timeInnerContainer);
 
 
@@ -200,7 +200,7 @@ function parseURLParameters(url) {
           const end_time = $('[name="end_time"]').val();
           const bikou = $('[name="comment"]').val();
         
-          const message = `赤枠希望：\n${date}\n${start_time} ~ ${end_time}\n`+ `\n備考：\n${bikou}`;
+          const message = `赤枠希望：\n${date}\n${start_time} ~ ${end_time}\n備考：\n${bikou}`;
           sendText(message);
           return false;
       });
