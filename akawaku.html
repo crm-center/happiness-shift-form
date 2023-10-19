@@ -142,9 +142,9 @@ console.log(end);
 
 const $timeInnerContainer = $('<div class="d-flex"></div>');
 $timeInnerContainer.append(
-    `<select class="col-5" name="start_time" id="start_time"><option value="${start}" selected></option>${option}</select>`,
+    `<select class="col-5" name="start_time" id="start_time"><option value="${start}" selected>${start}</option>${option}</select>`,
     `<p class="mx-1 my-auto">〜</p>`,
-    `<select class="col-5" name="end_time" id="end_time"><option value="${end}" selected></option>${option}</select>`,
+    `<select class="col-5" name="end_time" id="end_time"><option value="${end}" selected>${end}</option>${option}</select>`,
 );
     
 $('.time').append($timeInnerContainer);
