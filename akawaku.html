@@ -30,7 +30,6 @@
   <script src="https://static.line-scdn.net/liff/edge/2.1/sdk.js"></script>
   <script>
     const option = `
-  <option value=""></option>
   <option value="08:00">08:00</option>
   <option value="08:15">08:15</option>
   <option value="08:30">08:30</option>
@@ -128,20 +127,47 @@
   <option value="07:30">07:30</option>
   <option value="07:45">07:45</option>`;
 
-  const $timeInnerContainer = $('<div class="d-flex"></div>');
-  $timeInnerContainer.append(
-      `<select class="col-5" name="start_time" id="start_time">${option}</select>`,
-      `<p class="mx-1 my-auto">〜</p>`,
-      `<select class="col-5" name="end_time" id="end_time">${option}</select>`,
-  );
-    
-  $('.time').append($timeInnerContainer);
+const url = location.search;
+const parsedParams = parseURLParameters(url);
 
+// パースされたパラメータを変数に代入
+const date = parsedParams.date;
+const start = parsedParams.start;
+const end = parsedParams.end;
+
+const $timeInnerContainer = $('<div class="d-flex"></div>');
+$timeInnerContainer.append(
+    `<select class="col-5" name="start_time" id="start_time"><option value="${start}"></option>${option}</select>`,
+    `<p class="mx-1 my-auto">〜</p>`,
+    `<select class="col-5" name="end_time" id="end_time"><option value="${end}"></option>${option}</select>`,
+);
     
+$('.date').append(`<p class="mx-1 my-auto">${date}</p>`);
+$('.time').append($timeInnerContainer);
+
+
  $(document).ready(function () {
      const liffId = "1661326584-85YGYPYw";
      initializeLiff(liffId);
  })
+
+function parseURLParameters(url) {
+    // URLからクエリ文字列を取得
+    const queryString = url.split('?')[1];
+
+    // クエリ文字列を & で分割し、各パラメータを処理
+    const parameters = queryString.split('&');
+    const result = {};
+
+    parameters.forEach(param => {
+        const [key, value] = param.split('=');
+
+        // キーと値をデコードして結果オブジェクトに追加
+        result[key] = decodeURIComponent(value);
+    });
+
+    return result;
+}
 
  function initializeLiff(liffId) {
         liff.init({
