@@ -135,11 +135,6 @@ const date = parsedParams.date;
 const start = parsedParams.start;
 const end = parsedParams.end;
 
-console.log(parsedParams);
-console.log(date);
-console.log(start);
-console.log(end);
-
 const $timeInnerContainer = $('<div class="d-flex"></div>');
 $timeInnerContainer.append(
     `<select class="col-5" name="start_time" id="start_time"><option value="${start}" selected>${start}</option>${option}</select>`,
@@ -204,6 +199,12 @@ function parseURLParameters(url) {
           const start_time = $('[name="start_time"]').val();
           const end_time = $('[name="end_time"]').val();
           const bikou = $('[name="comment"]').val();
+        
+          console.log(date);
+          console.log(start_time);
+          console.log(end_time);
+          console.log(bikou);
+        
           const message = msg +`赤枠希望：\n${date}\n${start_time} ~ ${end_time}\n`+ `\n備考：\n${bikou}`;
           sendText(message);
           return false;
