@@ -132,7 +132,7 @@ const url = location.search;
 const parsedParams = parseURLParameters(url);
 
 // パースされたパラメータを変数に代入
-const place = parsedParams.place;
+const place = parsedParams.place === "1" ? "セントラル" : parsedParams.place === "2" ? "お片付け隊" : "キッズルーム";
 const date = parsedParams.date;
 const start = parsedParams.start;
 const end = parsedParams.end;
