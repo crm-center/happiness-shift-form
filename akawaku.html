@@ -147,7 +147,7 @@ $timeInnerContainer.append(
     `<select class="col-5" name="end_time" id="end_time"><option value="${end}" selected>${end}</option>${option}</select>`,
 );
     
-$('.date').append(`<p class="mx-1 my-auto">${date}</p>`,);
+$('.date').append(`<p class="mx-1 my-auto">${date}</p> <input type="text" name="input_date" value="${date}" class="sample" disabled="disabled" />`,);
 $('.time').append($timeInnerContainer);
 
 
@@ -200,23 +200,11 @@ function parseURLParameters(url) {
 
   $(function () {
       $('form').submit(function () {
-          let msg = '赤枠希望：';
-          let bikou = '備考：';
-          let has_date = false;
-          for (let i = 1; i < monthLastDay.getDate() + 1; i += 1) {
-            if($('[name="day-start-' + i + '"]').val() && $('[name="day-end-' + i + '"]').val()){
-              const start_time = $('[name="day-start-' + i + '"]').val();
-              const end_time = $('[name="day-end-' + i + '"]').val();
-              msg = msg + `\n${i}日: ${start_time}~${end_time}`;
-              has_date = true;
-            }
-            if($('[name="day-bikou-' + i + '"]').val()){
-              const bikou_text = $('[name="day-bikou-' + i + '"]').val();
-              bikou = bikou + `\n${i}日: ${bikou_text}`;
-            }
-          }
-          let message = has_date ? msg : msg +`\nなし`;
-          message = bikou === '備考：' ? message + `\n` + bikou + `\nなし` : message + `\n` + bikou;
+          const date = $('[name="input_date"]').val();
+          const start_time = $('[name="start_time"]').val();
+          const end_time = $('[name="end_time"]').val();
+          const bikou = $('[name="comment"]').val();
+          const message = msg +`赤枠希望：\n${date}\n${start_time} ~ ${end_time}\n`+ `\n備考：\n${bikou}`;
           sendText(message);
           return false;
       });
