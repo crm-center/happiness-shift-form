@@ -12,6 +12,7 @@
   <form class="w-75 mx-auto">
     <h2>赤枠希望</h2>
     <p>※出勤可能な時間に変更して提出してください。</p>
+    <div class='place my-2'>店舗: </div>
     <div class='date my-2'>日付: </div>
     <div class='time my-2'>時間:</div>
     <div class='comment my-2'>
@@ -131,6 +132,7 @@ const url = location.search;
 const parsedParams = parseURLParameters(url);
 
 // パースされたパラメータを変数に代入
+const place = parsedParams.place;
 const date = parsedParams.date;
 const start = parsedParams.start;
 const end = parsedParams.end;
@@ -142,7 +144,8 @@ $timeInnerContainer.append(
     `<select class="col-5" name="end_time" id="end_time"><option value="${end}" selected>${end}</option>${option}</select>`,
 );
     
-$('.date').append(` <input type="text" name="input_date" value="${date}" class="sample" disabled="disabled" />`,);
+$('.place').append(`<p>${place}</p><input type="text" name="input_date" value="${place}" class="sample" style="display:none;" />`);
+$('.date').append(`<input type="text" name="input_date" value="${date}" class="sample" style="display:none;" />`);
 $('.time').append($timeInnerContainer);
 
 
@@ -195,12 +198,13 @@ function parseURLParameters(url) {
 
   $(function () {
       $('form').submit(function () {
+          const place = $('[name="place"]').val();
           const date = $('[name="input_date"]').val();
           const start_time = $('[name="start_time"]').val();
           const end_time = $('[name="end_time"]').val();
           const bikou = $('[name="comment"]').val();
         
-          const message = `赤枠希望：\n${date}\n${start_time} ~ ${end_time}\n備考：\n${bikou}`;
+          const message = `赤枠希望：\n${place}\n${date}\n${start_time}\n${end_time}\n${bikou}`;
           sendText(message);
           return false;
       });
