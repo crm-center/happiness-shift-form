@@ -12,10 +12,10 @@
   <form class="w-75 mx-auto">
     <h2>赤枠希望</h2>
     <p>※出勤可能な時間に変更して提出してください。</p>
-    <div class='date my-2'>日付: <input type="date" value="2021-12-01"></div>
+    <div class='date my-2'>日付: </div>
     <div class='time my-2'>時間:</div>
     <div class='comment my-2'>
-      <label for="story">コメント:</label>
+      <label for="story">備考:</label>
       <textarea id="comment" name="comment" rows="5" cols="33">
       </textarea>
     </div>
@@ -147,6 +147,7 @@ $timeInnerContainer.append(
     `<select class="col-5" name="end_time" id="end_time"><option value="${end}" selected>${end}</option>${option}</select>`,
 );
     
+$('.date').append(`<p class="mx-1 my-auto">${date}</p>`,);
 $('.time').append($timeInnerContainer);
 
 
