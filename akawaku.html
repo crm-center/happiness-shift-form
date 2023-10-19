@@ -200,12 +200,7 @@ function parseURLParameters(url) {
           const end_time = $('[name="end_time"]').val();
           const bikou = $('[name="comment"]').val();
         
-          console.log(date);
-          console.log(start_time);
-          console.log(end_time);
-          console.log(bikou);
-        
-          const message = msg +`赤枠希望：\n${date}\n${start_time} ~ ${end_time}\n`+ `\n備考：\n${bikou}`;
+          const message = `赤枠希望：\n${date}\n${start_time} ~ ${end_time}\n`+ `\n備考：\n${bikou}`;
           sendText(message);
           return false;
       });
