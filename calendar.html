@@ -52,51 +52,35 @@
         dayDiv.innerHTML = `
           <div class="col">
             <h5>${date.getMonth() + 1}/${date.getDate()} (${dayOfWeek})：</h5>
+            <div class="form-row">
+              <div class="form-group col">
+                <select class="form-control" name="time_${date.getFullYear()}_${date.getMonth() + 1}_${date.getDate()}_1">
+                  <option value=""></option>
+                  <option value="08:00">08:00</option>
+                  <option value="08:15">08:15</option>
+                  <!-- 他の時間帯のオプションを追加 -->
+                </select>
+              </div>
+              <div class="form-group col-auto align-self-center">
+                <span>〜</span>
+              </div>
+              <div class="form-group col">
+                <select class="form-control" name="time_${date.getFullYear()}_${date.getMonth() + 1}_${date.getDate()}_2">
+                  <option value=""></option>
+                  <option value="09:00">09:00</option>
+                  <option value="09:15">09:15</option>
+                  <!-- 他の時間帯のオプションを追加 -->
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>備考：</label>
+              <input type="text" class="form-control" name="notes_${date.getFullYear()}_${date.getMonth() + 1}_${date.getDate()}">
+            </div>
           </div>
         `;
-
-        for (let j = 0; j < 2; j++) {
-          let timeSelect = document.createElement("select");
-          timeSelect.classList.add("form-control");
-          timeSelect.name = `time_${date.getFullYear()}_${date.getMonth() + 1}_${date.getDate()}_${j + 1}`;
-
-          let times = [
-            "08:00", "08:15", "08:30", "08:45", "09:00", /* ... 追加したい時間帯 */
-          ];
-
-          times.forEach(time => {
-            let option = document.createElement("option");
-            option.value = time;
-            option.textContent = time;
-            timeSelect.appendChild(option);
-          });
-
-          let selectDiv = document.createElement("div");
-          selectDiv.classList.add("col-auto", "mb-2");
-          selectDiv.appendChild(timeSelect);
-
-          if (j === 0) {
-            let separator = document.createElement("div");
-            separator.classList.add("col-auto", "mb-2", "align-self-center");
-            separator.textContent = " 〜 ";
-            dayDiv.appendChild(separator);
-          }
-
-          dayDiv.appendChild(selectDiv);
-        }
 
         calendar.appendChild(dayDiv);
-
-        // 備考欄
-        let notesDiv = document.createElement("div");
-        notesDiv.classList.add("row", "mt-2");
-        notesDiv.innerHTML = `
-          <div class="col">
-            <label>備考：</label>
-            <input type="text" class="form-control" name="notes_${date.getFullYear()}_${date.getMonth() + 1}_${date.getDate()}">
-          </div>
-        `;
-        calendar.appendChild(notesDiv);
       }
 
       let japaneseMonth = `${currentYear}年${currentMonth + 1}月`;
