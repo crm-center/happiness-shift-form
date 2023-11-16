@@ -2,6 +2,8 @@
 <html>
 <head>
   <title>シフト管理</title>
+  <!-- BootstrapのCDNリンクを追加 -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
   <h1>シフト管理</h1>
@@ -10,7 +12,7 @@
     <span id="currentMonth"></span>
     <button onclick="nextMonth()">次月</button>
   </div>
-  <div id="schedule"></div>
+  <div id="schedule" class="mt-4"></div>
 
   <script>
     let currentDate = new Date();
@@ -46,10 +48,16 @@
         let dayOfWeek = ['日', '月', '火', '水', '木', '金', '土'][date.getDay()];
 
         let dayDiv = document.createElement("div");
-        dayDiv.textContent = `${date.getMonth() + 1}/${date.getDate()} (${dayOfWeek})`;
+        dayDiv.classList.add("row", "mb-3");
+        dayDiv.innerHTML = `
+          <div class="col">
+            <h5>${date.getMonth() + 1}/${date.getDate()} (${dayOfWeek})：</h5>
+          </div>
+        `;
 
         for (let j = 0; j < 2; j++) {
           let timeSelect = document.createElement("select");
+          timeSelect.classList.add("form-control");
           timeSelect.name = `time_${date.getFullYear()}_${date.getMonth() + 1}_${date.getDate()}_${j + 1}`;
 
           let times = [
@@ -63,15 +71,28 @@
             timeSelect.appendChild(option);
           });
 
-          dayDiv.appendChild(timeSelect);
+          let selectDiv = document.createElement("div");
+          selectDiv.classList.add("col-5");
+          selectDiv.appendChild(timeSelect);
+          dayDiv.appendChild(selectDiv);
 
           // 2つ目の時間帯では、〜を表示
           if (j === 0) {
-            let separator = document.createElement("span");
+            let separator = document.createElement("div");
+            separator.classList.add("col-2", "text-center", "align-self-center");
             separator.textContent = " 〜 ";
             dayDiv.appendChild(separator);
           }
         }
+
+        // 備考欄
+        let notesDiv = document.createElement("div");
+        notesDiv.classList.add("col-12", "mt-2");
+        notesDiv.innerHTML = `
+          <label>備考：</label>
+          <input type="text" class="form-control" name="notes_${date.getFullYear()}_${date.getMonth() + 1}_${date.getDate()}">
+        `;
+        dayDiv.appendChild(notesDiv);
 
         calendar.appendChild(dayDiv);
       }
@@ -82,5 +103,10 @@
 
     updateCalendar();
   </script>
+
+  <!-- BootstrapのJavaScriptとPopper.jsのCDNリンクを追加 -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
