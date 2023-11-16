@@ -72,29 +72,31 @@
           });
 
           let selectDiv = document.createElement("div");
-          selectDiv.classList.add("col-5");
+          selectDiv.classList.add("col-auto", "mb-2");
           selectDiv.appendChild(timeSelect);
-          dayDiv.appendChild(selectDiv);
 
-          // 2つ目の時間帯では、〜を表示
           if (j === 0) {
             let separator = document.createElement("div");
-            separator.classList.add("col-2", "text-center", "align-self-center");
+            separator.classList.add("col-auto", "mb-2", "align-self-center");
             separator.textContent = " 〜 ";
             dayDiv.appendChild(separator);
           }
+
+          dayDiv.appendChild(selectDiv);
         }
+
+        calendar.appendChild(dayDiv);
 
         // 備考欄
         let notesDiv = document.createElement("div");
-        notesDiv.classList.add("col-12", "mt-2");
+        notesDiv.classList.add("row", "mt-2");
         notesDiv.innerHTML = `
-          <label>備考：</label>
-          <input type="text" class="form-control" name="notes_${date.getFullYear()}_${date.getMonth() + 1}_${date.getDate()}">
+          <div class="col">
+            <label>備考：</label>
+            <input type="text" class="form-control" name="notes_${date.getFullYear()}_${date.getMonth() + 1}_${date.getDate()}">
+          </div>
         `;
-        dayDiv.appendChild(notesDiv);
-
-        calendar.appendChild(dayDiv);
+        calendar.appendChild(notesDiv);
       }
 
       let japaneseMonth = `${currentYear}年${currentMonth + 1}月`;
