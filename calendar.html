@@ -13,12 +13,10 @@
   <div id="schedule"></div>
 
   <script>
-    // 現在の日付を取得
     let currentDate = new Date();
     let currentMonth = currentDate.getMonth();
     let currentYear = currentDate.getFullYear();
 
-    // 前月と次月の日付を更新する関数
     function previousMonth() {
       currentMonth--;
       if (currentMonth < 0) {
@@ -37,46 +35,43 @@
       updateCalendar();
     }
 
-    // カレンダーを更新する関数
     function updateCalendar() {
       let calendar = document.getElementById("schedule");
       calendar.innerHTML = "";
 
-      // 月の日数を取得
       let daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
 
-      // 日付のループ
       for (let i = 1; i <= daysInMonth; i++) {
         let date = new Date(currentYear, currentMonth, i);
+        let dayOfWeek = date.toLocaleDateString('en-US', { weekday: 'long' });
 
-        // 日付の表示
         let dayDiv = document.createElement("div");
-        dayDiv.textContent = date.toLocaleDateString();
-        
-        // 時間の選択肢を追加
-        let timeSelect = document.createElement("select");
-        timeSelect.name = `time_${date.getFullYear()}_${date.getMonth() + 1}_${date.getDate()}`;
+        dayDiv.textContent = `${date.getMonth() + 1}/${date.getDate()} (${dayOfWeek})`;
 
-        let times = [
-          "08:00", "08:15", "08:30", "08:45", "09:00", /* ... 追加したい時間帯 */
-        ];
+        for (let j = 0; j < 2; j++) {
+          let timeSelect = document.createElement("select");
+          timeSelect.name = `time_${date.getFullYear()}_${date.getMonth() + 1}_${date.getDate()}_${j + 1}`;
 
-        times.forEach(time => {
-          let option = document.createElement("option");
-          option.value = time;
-          option.textContent = time;
-          timeSelect.appendChild(option);
-        });
+          let times = [
+            "08:00", "08:15", "08:30", "08:45", "09:00", /* ... 追加したい時間帯 */
+          ];
 
-        dayDiv.appendChild(timeSelect);
+          times.forEach(time => {
+            let option = document.createElement("option");
+            option.value = time;
+            option.textContent = time;
+            timeSelect.appendChild(option);
+          });
+
+          dayDiv.appendChild(timeSelect);
+        }
+
         calendar.appendChild(dayDiv);
       }
 
-      // 現在の月を表示
       document.getElementById("currentMonth").textContent = `${currentYear}/${currentMonth + 1}`;
     }
 
-    // 初回のカレンダー表示
     updateCalendar();
   </script>
 </body>
