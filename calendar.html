@@ -43,7 +43,7 @@
 
       for (let i = 1; i <= daysInMonth; i++) {
         let date = new Date(currentYear, currentMonth, i);
-        let dayOfWeek = date.toLocaleDateString('en-US', { weekday: 'long' });
+        let dayOfWeek = ['日', '月', '火', '水', '木', '金', '土'][date.getDay()];
 
         let dayDiv = document.createElement("div");
         dayDiv.textContent = `${date.getMonth() + 1}/${date.getDate()} (${dayOfWeek})`;
@@ -64,12 +64,20 @@
           });
 
           dayDiv.appendChild(timeSelect);
+
+          // 2つ目の時間帯では、〜を表示
+          if (j === 0) {
+            let separator = document.createElement("span");
+            separator.textContent = " 〜 ";
+            dayDiv.appendChild(separator);
+          }
         }
 
         calendar.appendChild(dayDiv);
       }
 
-      document.getElementById("currentMonth").textContent = `${currentYear}/${currentMonth + 1}`;
+      let japaneseMonth = `${currentYear}年${currentMonth + 1}月`;
+      document.getElementById("currentMonth").textContent = japaneseMonth;
     }
 
     updateCalendar();
