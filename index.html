@@ -36,9 +36,9 @@
     const isBetween13thAnd25th = day >= 13 && day < 25;
     const isAfter25th = day >= 25;
     const monthLastDay = isBetween1stAnd13th ? new Date(today.getFullYear(), today.getMonth() + 1, 0) : new Date(today.getFullYear(), today.getMonth() + 2, 0);  
-    // const renderCondition = isBetween1stAnd13th ? (i) => i >= 16 && i <= monthLastDay.getDate() : (isBetween13thAnd25th ? (i) => i >= 1 && i <= 15 : (i) => i >= 16 && i <= monthLastDay.getDate());
-    // 8月特別用
-    const renderCondition = isBetween1stAnd13th ? (i) => i >= 16 && i <= monthLastDay.getDate() : (isBetween13thAnd25th ? (i) => i >= 1 && i <= 31 : (i) => i >= 16 && i <= monthLastDay.getDate());
+    const renderCondition = isBetween1stAnd13th ? (i) => i >= 16 && i <= monthLastDay.getDate() : (isBetween13thAnd25th ? (i) => i >= 1 && i <= 15 : (i) => i >= 16 && i <= monthLastDay.getDate());
+    // // 8月特別用
+    // const renderCondition = isBetween1stAnd13th ? (i) => i >= 16 && i <= monthLastDay.getDate() : (isBetween13thAnd25th ? (i) => i >= 1 && i <= 31 : (i) => i >= 16 && i <= monthLastDay.getDate());
     const option = `
   <option value=""></option>
   <option value="08:00">08:00</option>
