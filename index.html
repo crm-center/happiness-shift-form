@@ -32,6 +32,19 @@
       return weekdays[weekdayIndex];
     }
 
+  function specialShift(date) {
+    const weekendEigyo = ['12月1日','12月2日','12月8日','12月9日','12月15日','12月22日','12月23日','12月29日','12月30日','1月2日','1月5日','1月6日'];
+    const SundayEigyo = ['12月3日','12月10日','12月17日','12月24日','12月31日','1月1日','1月3日','1月7日'];
+  
+    if (SundayEigyo.includes(date)) {
+      return '日曜営業';
+    } else if (weekendEigyo.includes(date)) {
+      return '週末営業';
+    } else {
+      return '';
+    }
+  }
+
     const isBetween1stAnd13th = day >= 1 && day < 13;
     const isBetween13thAnd25th = day >= 13 && day < 25;
     const isAfter25th = day >= 25;
@@ -153,7 +166,7 @@
           `<select class="col-5" name="day-end-${i}" id="day-${i}">${option}</select>`,
         );
         $timeContainer.append(
-          `<label for="day-${i}" name="day-${i}">${month}月${date}：</label>`,
+          `<label for="day-${i}" name="day-${i}">${month}月${date}：${specialShift（${month}月${i}日）}</label>`,
           $timeInnerContainer
         );
     
