@@ -208,7 +208,7 @@
         $bikouContainer.append(
           `<label for="day-${i}" name="day-${i}">備考：</label>`,
           `<input class="col-12" type="text" name="day-bikou-${i}" id="day-${i}" />`,
-          `<input class="col-12" type="hidden" name="day-date-${i}" id="day-${i}" value="${month}月${i}" />`
+          `<input class="col-12" type="hidden" name="day-date-${i}" id="${month}月${i}" />`
         );
     
         $inputContainer.append($timeContainer, $bikouContainer);
@@ -251,7 +251,7 @@
           const store_param = $('[name="storeParam"]').val();
           let msg = `${store_param}シフト希望：`;
           let bikou = '備考：';
-          const day_date = $('[name="day-date-' + i + '"]').val();
+          const day_date = $('[name="day-date-' + i + '"]').attr('id');
           console.log(day_date);
           let has_date = false;
           for (let i = 1; i < monthLastDay.getDate() + 1; i += 1) {
