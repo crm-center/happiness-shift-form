@@ -208,6 +208,7 @@
         $bikouContainer.append(
           `<label for="day-${i}" name="day-${i}">備考：</label>`,
           `<input class="col-12" type="text" name="day-bikou-${i}" id="day-${i}" />`
+          `<input class="col-12" type="hidden" name="day-date-${i}" id="day-${i}" value="${month}月${date}" />`
         );
     
         $inputContainer.append($timeContainer, $bikouContainer);
@@ -250,17 +251,18 @@
           const store_param = $('[name="storeParam"]').val();
           let msg = `${store_param}シフト希望：`;
           let bikou = '備考：';
+          const date = $('[name="day-date-' + i + '"]').val()
           let has_date = false;
           for (let i = 1; i < monthLastDay.getDate() + 1; i += 1) {
             if($('[name="day-start-' + i + '"]').val() && $('[name="day-end-' + i + '"]').val()){
               const start_time = $('[name="day-start-' + i + '"]').val();
               const end_time = $('[name="day-end-' + i + '"]').val();
-              msg = msg + `\n${i}日: ${start_time}~${end_time}`;
+              msg = msg + `\n${date}: ${start_time}~${end_time}`;
               has_date = true;
             }
             if($('[name="day-bikou-' + i + '"]').val()){
               const bikou_text = $('[name="day-bikou-' + i + '"]').val();
-              bikou = bikou + `\n${i}日: ${bikou_text}`;
+              bikou = bikou + `\n${date}: ${bikou_text}`;
             }
           }
           let message = has_date ? msg : msg +`\nなし`;
