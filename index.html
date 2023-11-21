@@ -255,6 +255,7 @@
           for (let i = 1; i < monthLastDay.getDate() + 1; i += 1) {
             if($('[name="day-start-' + i + '"]').val() && $('[name="day-end-' + i + '"]').val()){
               const day_date = $('[name="day-date-' + i + '"]').val();
+              console.error(day_date);
               const start_time = $('[name="day-start-' + i + '"]').val();
               const end_time = $('[name="day-end-' + i + '"]').val();
               msg = msg + `\n${day_date}日: ${start_time}~${end_time}`;
