@@ -21,6 +21,28 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
   <script src="https://static.line-scdn.net/liff/edge/2.1/sdk.js"></script>
   <script>
+    //どこのお店のフォームか判別
+    document.addEventListener("DOMContentLoaded", function() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const storeParam = urlParams.get('store');
+      let titleText = '';
+
+      if (storeParam === 'okataduke') {
+        titleText = 'お片づけ隊';
+      } else if (storeParam === 'central') {
+        titleText = 'セントラル';
+      } else if (storeParam === 'kidsroom') {
+        titleText = 'キッズルーム';
+      }
+
+      if (titleText !== '') {
+        const formTitleElement = document.querySelector('.form_title');
+        const newTitle = document.createElement('h2');
+        newTitle.textContent = `${titleText}シフト希望入力フォーム`;
+        formTitleElement.parentNode.insertBefore(newTitle, formTitleElement);
+      }
+    });
+    
     const today = new Date();
     const day = today.getDate();
     const lastday = new Date(today.getFullYear(), today.getMonth() + 1, 0);
