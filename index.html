@@ -208,7 +208,7 @@
         $bikouContainer.append(
           `<label for="day-${i}" name="day-${i}">備考：</label>`,
           `<input class="col-12" type="text" name="day-bikou-${i}" id="day-${i}" />`,
-          `<input class="col-12" type="hidden" name="day-date-${i}" id="day-${i}" value="${month}月${date}" />`
+          `<input class="col-12" type="hidden" name="day-date-${i}" id="day-${i}" value="${month}月${i}" />`
         );
     
         $inputContainer.append($timeContainer, $bikouContainer);
@@ -258,12 +258,12 @@
             if($('[name="day-start-' + i + '"]').val() && $('[name="day-end-' + i + '"]').val()){
               const start_time = $('[name="day-start-' + i + '"]').val();
               const end_time = $('[name="day-end-' + i + '"]').val();
-              msg = msg + `\n${day_date}: ${start_time}~${end_time}`;
+              msg = msg + `\n${day_date}日: ${start_time}~${end_time}`;
               has_date = true;
             }
             if($('[name="day-bikou-' + i + '"]').val()){
               const bikou_text = $('[name="day-bikou-' + i + '"]').val();
-              bikou = bikou + `\n${day_date}: ${bikou_text}`;
+              bikou = bikou + `\n${day_date}日: ${bikou_text}`;
             }
           }
           let message = has_date ? msg : msg +`\nなし`;
