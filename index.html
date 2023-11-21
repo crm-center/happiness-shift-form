@@ -239,6 +239,9 @@
 
   $(function () {
       $('form').submit(function () {
+          const store_param = $('[name="storeParam"]').val();
+          let test = store_param ? convertJa(store_param) + 'シフト希望：' : 'シフト希望：';
+          console.log(test);
           let msg = 'シフト希望：';
           let bikou = '備考：';
           let has_date = false;
