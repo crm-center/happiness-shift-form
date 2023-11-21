@@ -25,6 +25,7 @@
     document.addEventListener("DOMContentLoaded", function() {
       const urlParams = new URLSearchParams(window.location.search);
       const storeParam = urlParams.get('store');
+      console.log(storeParam);
       let titleText = '';
 
       if (storeParam === 'okataduke') {
@@ -34,6 +35,8 @@
       } else if (storeParam === 'kidsroom') {
         titleText = 'キッズルーム';
       }
+
+      console.log(titleText);
 
       if (titleText !== '') {
         const formTitleElement = document.querySelector('.form_title');
