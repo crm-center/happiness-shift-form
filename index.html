@@ -10,7 +10,7 @@
 </head>
 <body>
   <form class="w-75 mx-auto">
-    <h2 class="form_title">シフト希望入力フォーム</h2>
+    <h2 class="form_title"></h2>
     <div class='date'></div>
     <input type="submit" class="mt-4 btn btn-primary" value="送信">
   </form>
@@ -36,14 +36,10 @@
         titleText = 'キッズルーム';
       }
 
-      console.log(titleText);
-
-      if (titleText !== '') {
-        const formTitleElement = document.querySelector('.form_title');
-        const newTitle = document.createElement('h2');
-        newTitle.textContent = `${titleText}シフト希望入力フォーム`;
-        formTitleElement.parentNode.insertBefore(newTitle, formTitleElement);
-      }
+      const formTitleElement = document.querySelector('.form_title');
+      const newTitle = document.createElement('h2');
+      newTitle.textContent = `${titleText}シフト希望フォーム`;
+      formTitleElement.parentNode.insertBefore(newTitle, formTitleElement);
     });
     
     const today = new Date();
