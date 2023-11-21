@@ -27,16 +27,8 @@
     document.addEventListener("DOMContentLoaded", function() {
       const urlParams = new URLSearchParams(window.location.search);
       const storeParam = urlParams.get('store');
-      console.log(storeParam);
-      let titleText = '';
+      const titleText = convertJa(storeParam);
 
-      if (storeParam === 'okataduke') {
-        titleText = 'お片づけ隊';
-      } else if (storeParam === 'central') {
-        titleText = 'セントラル';
-      } else if (storeParam === 'kidsroom') {
-        titleText = 'キッズルーム';
-      }
 
       const formTitleElement = document.querySelector('.form_title');
       const newTitle = document.createElement('h2');
@@ -56,6 +48,18 @@
       const weekdayIndex = date.getDay();
       return weekdays[weekdayIndex];
     }
+
+  function convertJa(storeParam){
+      if (storeParam === 'okataduke') {
+        return 'お片づけ隊';
+      } else if (storeParam === 'central') {
+        return 'セントラル';
+      } else if (storeParam === 'kidsroom') {
+        return 'キッズルーム';
+      } else {
+        return '';
+      }
+  }
 
   function specialShift(date) {
     const weekendEigyo = ['12月1日','12月2日','12月8日','12月9日','12月15日','12月22日','12月23日','12月29日','12月30日','1月2日','1月5日','1月6日'];
@@ -239,7 +243,8 @@
 
   $(function () {
       $('form').submit(function () {
-          let msg = 'シフト希望：';
+          const store_param = $('[name="storeParam"]').val();
+          let msg = store_param ? convertJa(store_param) + 'シフト希望：' : 'シフト希望：';
           let bikou = '備考：';
           let has_date = false;
           for (let i = 1; i < monthLastDay.getDate() + 1; i += 1) {
