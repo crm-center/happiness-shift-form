@@ -213,7 +213,7 @@
     
         $inputContainer.append($timeContainer, $bikouContainer);
         $dayElement.append($inputContainer);
-        $('.date').append($dayElement);
+        // $('.date').append($dayElement);
       }
     }
 
@@ -282,20 +282,20 @@
           let msg = `${store_param}シフト希望：`;
           let bikou = '備考：';
           let has_date = false;
-          for (let i = 1; i < monthLastDay.getDate() + 1; i += 1) {
-            if($('[name="day-start-' + i + '"]').val() && $('[name="day-end-' + i + '"]').val()){
-              const day_date = $('[name="day-date-' + i + '"]').val();
-              const start_time = $('[name="day-start-' + i + '"]').val();
-              const end_time = $('[name="day-end-' + i + '"]').val();
-              msg = msg + `\n${day_date}日: ${start_time}~${end_time}`;
-              has_date = true;
-            }
-            if($('[name="day-bikou-' + i + '"]').val()){
-              const day_date_bikou = $('[name="day-date-' + i + '"]').val();
-              const bikou_text = $('[name="day-bikou-' + i + '"]').val();
-              bikou = bikou + `\n${day_date_bikou}日: ${bikou_text}`;
-            }
-          }
+          // for (let i = 1; i < monthLastDay.getDate() + 1; i += 1) {
+          //   if($('[name="day-start-' + i + '"]').val() && $('[name="day-end-' + i + '"]').val()){
+          //     const day_date = $('[name="day-date-' + i + '"]').val();
+          //     const start_time = $('[name="day-start-' + i + '"]').val();
+          //     const end_time = $('[name="day-end-' + i + '"]').val();
+          //     msg = msg + `\n${day_date}日: ${start_time}~${end_time}`;
+          //     has_date = true;
+          //   }
+          //   if($('[name="day-bikou-' + i + '"]').val()){
+          //     const day_date_bikou = $('[name="day-date-' + i + '"]').val();
+          //     const bikou_text = $('[name="day-bikou-' + i + '"]').val();
+          //     bikou = bikou + `\n${day_date_bikou}日: ${bikou_text}`;
+          //   }
+          // }
           for (let i = 1; i <= 31; i++) {
             if($('[name="day-start-2024-' + i + '"]').val() && $('[name="day-end-2024-' + i + '"]').val()){
               const day_date2024 = $('[name="day-date-2024-' + i + '"]').val();
