@@ -330,8 +330,8 @@
           }
           const idToken = liff.getDecodedIDToken();
           const userId = idToken.sub;
-          const dateInfoElement2 = userId;
-          dateInfoElement2.textContent = dateParam;
+          const dateInfoElement2 = document.getElementById('dateInfo2');;
+          dateInfoElement2.textContent = userId;
           console.log(userId);
         })
   }
