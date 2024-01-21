@@ -255,8 +255,7 @@
   <script src="https://static.line-scdn.net/liff/edge/2.1/sdk.js"></script>
   <script>
     //どこのお店のフォームか判別
-    document.addEventListener("DOMContentLoaded", function() {
-      dateInfoElement.textContent = window.location.search;
+    document.addEventListener("DOMContentLoaded", function() {      
       const queryString = decodeURIComponent(window.location.search).replace(
         '?liff.state=',
         ''
@@ -274,6 +273,7 @@
     
       // h2要素に日付情報を表示
       const dateInfoElement = document.getElementById('dateInfo');
+      dateInfoElement.textContent = window.location.search;
       // dateInfoElement.textContent = `${year}年${month}月${day}日（${dayOfWeek}）`;
       // const idToken = liff.getDecodedIDToken();
       // const userId = idToken.sub;
