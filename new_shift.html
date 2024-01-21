@@ -273,7 +273,7 @@
     
       // h2要素に日付情報を表示
       const dateInfoElement = document.getElementById('dateInfo');
-      dateInfoElement.textContent = window.location.search;
+      dateInfoElement.textContent = new URLSearchParams(window.location.search);
       // dateInfoElement.textContent = `${year}年${month}月${day}日（${dayOfWeek}）`;
       // const idToken = liff.getDecodedIDToken();
       // const userId = idToken.sub;
