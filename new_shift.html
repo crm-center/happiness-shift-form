@@ -264,8 +264,10 @@
       )
       const urlParams = new URLSearchParams(queryString)
       const dateParam = urlParams.get('date');
-      // パラメータから日付を解析
-      const dateObj = new Date(dateParam);
+      
+      // ハイフンをスラッシュに置換することで標準的な形式に変換
+      const standardDateFormat = dateParam.replace(/-/g, '/');
+      const dateObj = new Date(standardDateFormat);
       
       // 年、月、日、曜日を取得
       const year = dateObj.getFullYear();
