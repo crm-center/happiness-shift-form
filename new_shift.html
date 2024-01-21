@@ -256,7 +256,11 @@
   <script>
     //どこのお店のフォームか判別
     document.addEventListener("DOMContentLoaded", function() {
-      const urlParams = new URLSearchParams(window.location.search);
+      const queryString = decodeURIComponent(window.location.search).replace(
+        '?liff.state=',
+        ''
+      )
+      const urlParams = new URLSearchParams(queryString)
       const dateParam = urlParams.get('date');
       // パラメータから日付を解析
       const dateObj = new Date(dateParam);
