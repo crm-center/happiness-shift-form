@@ -11,6 +11,8 @@
 <body>
   <div class="container mt-5">
   <h2 id="dateInfo"></h2>
+  <h2 id="dateInfo2"></h2>
+  <h2 id="dateInfo3"></h2>
     <form>
       <!-- 店舗選択 -->
       <div class="form-group">
@@ -274,6 +276,10 @@
       // h2要素に日付情報を表示
       const dateInfoElement = document.getElementById('dateInfo');
       dateInfoElement.textContent = `${year}年${month}月${day}日（${dayOfWeek}）`;
+      const dateInfoElement2 = document.getElementById('dateInfo2');
+      dateInfoElement2.textContent = year;
+      const dateInfoElement3 = document.getElementById('dateInfo3');
+      dateInfoElement3.textContent = month;
       // const idToken = liff.getDecodedIDToken();
       // const userId = idToken.sub;
       // dateInfoElement.textContent = userId;
