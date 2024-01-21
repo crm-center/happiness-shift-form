@@ -10,7 +10,7 @@
 </head>
 <body>
   <div class="container mt-5">
-  <h2>1月10日</h2>
+  <h2 id="dateInfo"></h2>
     <form>
       <!-- 店舗選択 -->
       <div class="form-group">
@@ -257,8 +257,20 @@
     //どこのお店のフォームか判別
     document.addEventListener("DOMContentLoaded", function() {
       const urlParams = new URLSearchParams(window.location.search);
-      const storeParam = urlParams.get('store');
-      console.log(storeParam);
+      const dateParam = urlParams.get('date');
+      // パラメータから日付を解析
+      const dateObj = new Date(dateParam);
+      
+      // 年、月、日、曜日を取得
+      const year = dateObj.getFullYear();
+      const month = dateObj.getMonth() + 1; // 月は0から始まるため+1する
+      const day = dateObj.getDate();
+      const dayOfWeek = ['日', '月', '火', '水', '木', '金', '土'][dateObj.getDay()];
+    
+      // h2要素に日付情報を表示
+      const dateInfoElement = document.getElementById('dateInfo');
+      dateInfoElement.textContent = `${year}年${month}月${day}日（${dayOfWeek}）`;
+      
       let titleText = '';
 
       if (storeParam === 'okataduke') {
