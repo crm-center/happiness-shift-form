@@ -315,6 +315,15 @@
         }).catch((err) => {
             console.log('LIFF Initialization failed ', err);
         });
+
+        liff.ready.then(() => {
+          if (!liff.isLoggedIn()) {
+            liff.login();
+          }
+          const idToken = liff.getDecodedIDToken();
+          const userId = idToken.sub;
+          console.log(userId);
+        })
   }
     
   function sendText(text) {
