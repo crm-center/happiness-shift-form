@@ -57,11 +57,11 @@ jobs:
 
       - name: Replace placeholders in new_shift.html with environment variables
         run: |
-          sed -i "s/\*\*\*/$(echo "$LIFF_ID" | sed 's/[\*\/&]/\\&/g')/g" path/to/new_shift.html
-          sed -i "s/\*\*\*/$(echo "$GOOGLE_CALENDAR_API_KEY" | sed 's/[\*\/&]/\\&/g')/g" path/to/new_shift.html
-          sed -i "s/\*\*\*/$(echo "$CENTRAL_CALENDAR_ID" | sed 's/[\*\/&]/\\&/g')/g" path/to/new_shift.html
-          sed -i "s/\*\*\*/$(echo "$OKATADUKE_CALENDAR_ID" | sed 's/[\*\/&]/\\&/g')/g" path/to/new_shift.html
-          sed -i "s/\*\*\*/$(echo "$KIDSROOM_CALENDAR_ID" | sed 's/[\*\/&]/\\&/g')/g" path/to/new_shift.html
+          sed -i "s/\*\*\*/$(echo "$LIFF_ID" | sed 's/[\*\/&]/\\&/g')/g" new_shift.html
+          sed -i "s/\*\*\*/$(echo "$GOOGLE_CALENDAR_API_KEY" | sed 's/[\*\/&]/\\&/g')/g" new_shift.html
+          sed -i "s/\*\*\*/$(echo "$CENTRAL_CALENDAR_ID" | sed 's/[\*\/&]/\\&/g')/g" new_shift.html
+          sed -i "s/\*\*\*/$(echo "$OKATADUKE_CALENDAR_ID" | sed 's/[\*\/&]/\\&/g')/g" new_shift.html
+          sed -i "s/\*\*\*/$(echo "$KIDSROOM_CALENDAR_ID" | sed 's/[\*\/&]/\\&/g')/g" new_shift.html
         
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
