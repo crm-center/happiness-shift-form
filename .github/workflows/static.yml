@@ -28,45 +28,21 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
-    env: 
-      LIFF_ID: ${{ secrets.LIFF_ID }}
-      GOOGLE_CALENDAR_API_KEY: ${{ secrets.GOOGLE_CALENDAR_API_KEY }}
-      CENTRAL_CALENDAR_ID: ${{ secrets.CENTRAL_CALENDAR_ID }}
-      OKATADUKE_CALENDAR_ID: ${{ secrets.OKATADUKE_CALENDAR_ID }}
-      KIDSROOM_CALENDAR_ID: ${{ secrets.KIDSROOM_CALENDAR_ID }}
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Setup Pages
-        uses: actions/configure-pages@v4
-
-      - name: Set up environment variables
-        run: |
-          echo "LIFF_ID=${{ secrets.LIFF_ID }}" >> $GITHUB_ENV
-          echo "GOOGLE_CALENDAR_API_KEY=${{ secrets.GOOGLE_CALENDAR_API_KEY }}" >> $GITHUB_ENV
-          echo "CENTRAL_CALENDAR_ID=${{ secrets.CENTRAL_CALENDAR_ID }}" >> $GITHUB_ENV
-          echo "OKATADUKE_CALENDAR_ID=${{ secrets.OKATADUKE_CALENDAR_ID }}" >> $GITHUB_ENV
-          echo "KIDSROOM_CALENDAR_ID=${{ secrets.KIDSROOM_CALENDAR_ID }}" >> $GITHUB_ENV
-  
-          # Debug: Display environment variables
-          echo "LIFF_ID=$LIFF_ID"
-          echo "GOOGLE_CALENDAR_API_KEY=$GOOGLE_CALENDAR_API_KEY"
-          echo "CENTRAL_CALENDAR_ID=$CENTRAL_CALENDAR_ID"
-          echo "OKATADUKE_CALENDAR_ID=$OKATADUKE_CALENDAR_ID"
-          echo "KIDSROOM_CALENDAR_ID=$KIDSROOM_CALENDAR_ID"
-          
-      - name: Build and deploy
-        run: |
-          npm install
-          npm run build
-
-      - name: Replace placeholders in new_shift.html with environment variables
-        run: |
-          sed -i "s/\*\*\*/$(echo "$LIFF_ID" | sed 's/[\*\/&]/\\&/g')/g" new_shift.html
-          sed -i "s/\*\*\*/$(echo "$GOOGLE_CALENDAR_API_KEY" | sed 's/[\*\/&]/\\&/g')/g" new_shift.html
-          sed -i "s/\*\*\*/$(echo "$CENTRAL_CALENDAR_ID" | sed 's/[\*\/&]/\\&/g')/g" new_shift.html
-          sed -i "s/\*\*\*/$(echo "$OKATADUKE_CALENDAR_ID" | sed 's/[\*\/&]/\\&/g')/g" new_shift.html
-          sed -i "s/\*\*\*/$(echo "$KIDSROOM_CALENDAR_ID" | sed 's/[\*\/&]/\\&/g')/g" new_shift.html
+        uses: actions/configure-pages@v4  
+        
+      - name: run hello action
+        env: 
+          LIFF_ID: ${{ secrets.LIFF_ID }}
+          GOOGLE_CALENDAR_API_KEY: ${{ secrets.GOOGLE_CALENDAR_API_KEY }}
+          CENTRAL_CALENDAR_ID: ${{ secrets.CENTRAL_CALENDAR_ID }}
+          OKATADUKE_CALENDAR_ID: ${{ secrets.OKATADUKE_CALENDAR_ID }}
+          KIDSROOM_CALENDAR_ID: ${{ secrets.KIDSROOM_CALENDAR_ID }}
+        uses: ./new_shift.html
         
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
