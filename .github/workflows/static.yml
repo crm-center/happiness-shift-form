@@ -54,6 +54,9 @@ jobs:
           echo "CENTRAL_CALENDAR_ID=$CENTRAL_CALENDAR_ID"
           echo "OKATADUKE_CALENDAR_ID=$OKATADUKE_CALENDAR_ID"
           echo "KIDSROOM_CALENDAR_ID=$KIDSROOM_CALENDAR_ID"
+          
+      - name: Build and deploy
+        run: npm run build  # ここでビルドスクリプトを実行
 
       - name: Replace placeholders in new_shift.html with environment variables
         run: |
