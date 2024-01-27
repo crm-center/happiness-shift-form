@@ -1,0 +1,5 @@
+{
+  "scripts": {
+    "build": "ncc build ./src/index.js --license license.txt -o dist"
+  }
+}
