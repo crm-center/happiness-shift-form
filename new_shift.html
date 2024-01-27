@@ -331,7 +331,7 @@
           const idToken = liff.getDecodedIDToken();
           const userId = idToken.sub;
           const dateInfoElement2 = document.getElementById('dateInfo2');;
-          dateInfoElement2.textContent = process.env.LIFF_ID;
+          dateInfoElement2.textContent = "${{ secrets.LIFF_ID }}";
           console.log(userId);
         })
   }
