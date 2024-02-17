@@ -286,7 +286,7 @@
 
   $(function () {
       $('form').submit(function () {
-          const store_param = $('[name="storeParam"]').val();
+          const store_param = document.querySelector('input[name="storeParam"]:checked').value;
           let msg = `${store_param}シフト希望：`;
           let bikou = '備考：';
           let has_date = false;
