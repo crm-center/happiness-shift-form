@@ -13,11 +13,19 @@
     <h2 class="form_title"></h2>
     <div class="my-4">
       <label for="shopSelection"><span style="color:red;">※</span>店舗の選択：</label>
-      <select id="shopSelection" name="storeParam">
+<!--       <select id="shopSelection" name="storeParam">
         <option value="セントラル">セントラル</option>
         <option value="お片付け隊">お片付け隊</option>
         <option value="キッズルーム">キッズルーム</option>
-      </select>
+      </select> -->
+    <input type="radio" id="central" name="storeParam" value="セントラル" checked>
+    <label for="central">セントラル</label><br>
+    
+    <input type="radio" id="cleanup" name="storeParam" value="お片付け隊">
+    <label for="cleanup">お片付け隊</label><br>
+    
+    <input type="radio" id="kidsroom" name="storeParam" value="キッズルーム">
+    <label for="kidsroom">キッズルーム</label><br>
     </div>
     <div class='date'></div>
     <!-- hidden input要素 -->
