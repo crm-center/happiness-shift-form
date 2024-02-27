@@ -193,7 +193,7 @@
   <option value="07:45">07:45</option>`;
 
     for (let i = 1; i <= monthLastDay.getDate(); i++) {
-      if (renderCondition(i)) {
+      // if (renderCondition(i)) {
         const month = isBetween1stAnd13th ? today.getMonth() + 1 : today.getMonth() + 2;
         const date = `${i}日（${getWeekday(today.getFullYear(), month, i)}）`;
         const $dayElement = $(`<div class="day-${i} row my-2"></div>`);
@@ -222,7 +222,7 @@
         $inputContainer.append($timeContainer, $bikouContainer);
         $dayElement.append($inputContainer);
         $('.date').append($dayElement);
-      }
+      // }
     }
 
     //   for (let i = 1; i <= 31; i++) {
