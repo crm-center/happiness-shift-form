@@ -192,7 +192,7 @@
   <option value="07:30">07:30</option>
   <option value="07:45">07:45</option>`;
 
-    for (let i = 11; i <= 14; i++) {
+    for (let i = 1; i <= 30; i++) {
       // if (renderCondition(i)) {
         const month = isBetween1stAnd13th ? today.getMonth() + 1 : today.getMonth() + 2;
         const date = `${i}日（${getWeekday(today.getFullYear(), month, i)}）`;
