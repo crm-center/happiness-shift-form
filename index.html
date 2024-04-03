@@ -225,35 +225,35 @@
       // }
     }
 
-    //   for (let i = 1; i <= 31; i++) {
-    //       const date = `${i}日（${getWeekday(2024, 1, i)}）`;
-    //       const $dayElement = $(`<div class="day-2024-${i} row my-2"></div>`);
-    //       const $inputContainer = $('<div class="col-12 input-container"></div>');
+      for (let i = 1; i <= 6; i++) {
+          const date = `${i}日（${getWeekday(2024, 5, i)}）`;
+          const $dayElement = $(`<div class="day-2024-${i} row my-2"></div>`);
+          const $inputContainer = $('<div class="col-12 input-container"></div>');
       
-    //       const $timeContainer = $('<div class="d-flex flex-column"></div>');
-    //       const $timeInnerContainer = $('<div class="d-flex"></div>');
-    //       $timeInnerContainer.append(
-    //         `<select class="col-5" name="day-start-2024-${i}" id="day-2024-${i}">${option}</select>`,
-    //         `<p class="mx-1 my-auto">〜</p>`,
-    //         `<select class="col-5" name="day-end-2024-${i}" id="day-2024-${i}">${option}</select>`,
-    //       );
-    //       const specialShiftDate = `1月${i}日`;
-    //       $timeContainer.append(
-    //        `<label for="day-2024-${i}" name="day-2024-${i}">1月${date}：${specialShift(specialShiftDate)}</label>`,
-    //         $timeInnerContainer
-    //       );
+          const $timeContainer = $('<div class="d-flex flex-column"></div>');
+          const $timeInnerContainer = $('<div class="d-flex"></div>');
+          $timeInnerContainer.append(
+            `<select class="col-5" name="day-start-2024-${i}" id="day-2024-${i}">${option}</select>`,
+            `<p class="mx-1 my-auto">〜</p>`,
+            `<select class="col-5" name="day-end-2024-${i}" id="day-2024-${i}">${option}</select>`,
+          );
+          const specialShiftDate = `1月${i}日`;
+          $timeContainer.append(
+           `<label for="day-2024-${i}" name="day-2024-${i}">1月${date}：${specialShift(specialShiftDate)}</label>`,
+            $timeInnerContainer
+          );
       
-    //       const $bikouContainer = $('<div class="d-flex flex-column my-1"></div>');
-    //       $bikouContainer.append(
-    //         `<label for="day-${i}" name="day-2024-${i}">備考：</label>`,
-    //         `<input class="col-12" type="text" name="day-bikou-2024-${i}" id="day-2024-${i}" />`,
-    //         `<input class="col-12" type="hidden" name="day-date-2024-${i}" id="day-2024-${i}" value="1月${i}" />`
-    //       );
+          const $bikouContainer = $('<div class="d-flex flex-column my-1"></div>');
+          $bikouContainer.append(
+            `<label for="day-${i}" name="day-2024-${i}">備考：</label>`,
+            `<input class="col-12" type="text" name="day-bikou-2024-${i}" id="day-2024-${i}" />`,
+            `<input class="col-12" type="hidden" name="day-date-2024-${i}" id="day-2024-${i}" value="1月${i}" />`
+          );
       
-    //       $inputContainer.append($timeContainer, $bikouContainer);
-    //       $dayElement.append($inputContainer);
-    //       $('.date').append($dayElement);
-    // }
+          $inputContainer.append($timeContainer, $bikouContainer);
+          $dayElement.append($inputContainer);
+          $('.date').append($dayElement);
+    }
     
  $(document).ready(function () {
      const liffId = "1661326584-85YGYPYw";
@@ -304,20 +304,20 @@
               bikou = bikou + `\n${day_date_bikou}日: ${bikou_text}`;
             }
           }
-          // for (let i = 1; i <= 31; i++) {
-          //   if($('[name="day-start-2024-' + i + '"]').val() && $('[name="day-end-2024-' + i + '"]').val()){
-          //     const day_date2024 = $('[name="day-date-2024-' + i + '"]').val();
-          //     const start_time2024 = $('[name="day-start-2024-' + i + '"]').val();
-          //     const end_time2024 = $('[name="day-end-2024-' + i + '"]').val();
-          //     msg = msg + `\n${day_date2024}日: ${start_time2024}~${end_time2024}`;
-          //     has_date = true;
-          //   }
-          //   if($('[name="day-bikou-2024-' + i + '"]').val()){
-          //     const day_date_bikou2024 = $('[name="day-date-2024-' + i + '"]').val();
-          //     const bikou_text2024 = $('[name="day-bikou-2024-' + i + '"]').val();
-          //     bikou = bikou + `\n${day_date_bikou2024}日: ${bikou_text2024}`;
-          //   }
-          // }
+          for (let i = 1; i <= 6; i++) {
+            if($('[name="day-start-2024-' + i + '"]').val() && $('[name="day-end-2024-' + i + '"]').val()){
+              const day_date2024 = $('[name="day-date-2024-' + i + '"]').val();
+              const start_time2024 = $('[name="day-start-2024-' + i + '"]').val();
+              const end_time2024 = $('[name="day-end-2024-' + i + '"]').val();
+              msg = msg + `\n${day_date2024}日: ${start_time2024}~${end_time2024}`;
+              has_date = true;
+            }
+            if($('[name="day-bikou-2024-' + i + '"]').val()){
+              const day_date_bikou2024 = $('[name="day-date-2024-' + i + '"]').val();
+              const bikou_text2024 = $('[name="day-bikou-2024-' + i + '"]').val();
+              bikou = bikou + `\n${day_date_bikou2024}日: ${bikou_text2024}`;
+            }
+          }
           let message = has_date ? msg : msg +`\nなし`;
           message = bikou === '備考：' ? message + `\n` + bikou + `\nなし` : message + `\n` + bikou;
           sendText(message);
