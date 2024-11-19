@@ -234,13 +234,13 @@
           const $timeContainer = $('<div class="d-flex flex-column"></div>');
           const $timeInnerContainer = $('<div class="d-flex"></div>');
           $timeInnerContainer.append(
-            `<select class="col-5" name="day-start-2025-${i}" id="day-2024-${i}">${option}</select>`,
+            `<select class="col-5" name="day-start-2025-${i}" id="day-2025-${i}">${option}</select>`,
             `<p class="mx-1 my-auto">〜</p>`,
-            `<select class="col-5" name="day-end-2025-${i}" id="day-2024-${i}">${option}</select>`,
+            `<select class="col-5" name="day-end-2025-${i}" id="day-2025-${i}">${option}</select>`,
           );
           const specialShiftDate = `1月${i}日`;
           $timeContainer.append(
-           `<label for="day-2024-${i}" name="day-2025-${i}">1月${date}：${specialShift(specialShiftDate)}</label>`,
+           `<label for="day-2025-${i}" name="day-2025-${i}">1月${date}：${specialShift(specialShiftDate)}</label>`,
             $timeInnerContainer
           );
       
@@ -308,17 +308,17 @@
           }
           // 特別系
           for (let i = 1; i <= 5; i++) {
-            if($('[name="day-start-2024-' + i + '"]').val() && $('[name="day-end-2024-' + i + '"]').val()){
-              const day_date2024 = $('[name="day-date-2024-' + i + '"]').val();
-              const start_time2024 = $('[name="day-start-2024-' + i + '"]').val();
-              const end_time2024 = $('[name="day-end-2024-' + i + '"]').val();
-              msg = msg + `\n${day_date2024}日: ${start_time2024}~${end_time2024}`;
+            if($('[name="day-start-2025-' + i + '"]').val() && $('[name="day-end-2025-' + i + '"]').val()){
+              const day_date2025 = $('[name="day-date-2025-' + i + '"]').val();
+              const start_time2025 = $('[name="day-start-2025-' + i + '"]').val();
+              const end_time2025 = $('[name="day-end-2025-' + i + '"]').val();
+              msg = msg + `\n${day_date2025}日: ${start_time2025}~${end_time2025}`;
               has_date = true;
             }
-            if($('[name="day-bikou-2024-' + i + '"]').val()){
-              const day_date_bikou2024 = $('[name="day-date-2024-' + i + '"]').val();
-              const bikou_text2024 = $('[name="day-bikou-2024-' + i + '"]').val();
-              bikou = bikou + `\n${day_date_bikou2024}日: ${bikou_text2024}`;
+            if($('[name="day-bikou-2025-' + i + '"]').val()){
+              const day_date_bikou2025 = $('[name="day-date-2025-' + i + '"]').val();
+              const bikou_text2025 = $('[name="day-bikou-2025-' + i + '"]').val();
+              bikou = bikou + `\n${day_date_bikou2025}日: ${bikou_text2025}`;
             }
           }
          // ここまで
