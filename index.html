@@ -226,7 +226,7 @@
       // }
     }
       // 特別系
-      for (let i = 1; i <= 6; i++) {
+      for (let i = 1; i <= 5; i++) {
           const date = `${i}日（${getWeekday(2025, 1, i)}）`;
           const $dayElement = $(`<div class="day-2025-${i} row my-2"></div>`);
           const $inputContainer = $('<div class="col-12 input-container"></div>');
@@ -307,7 +307,7 @@
             }
           }
           // 特別系
-          for (let i = 1; i <= 6; i++) {
+          for (let i = 1; i <= 5; i++) {
             if($('[name="day-start-2024-' + i + '"]').val() && $('[name="day-end-2024-' + i + '"]').val()){
               const day_date2024 = $('[name="day-date-2024-' + i + '"]').val();
               const start_time2024 = $('[name="day-start-2024-' + i + '"]').val();
