@@ -195,7 +195,7 @@
 
     for (let i = 1; i <= monthLastDay.getDate(); i++) {
       // if (renderCondition(i)) {
-        const year = isBetween1stAnd13th && today.getMonth() !== 11 ? : today.getFullYear() ? today.getFullYear() + 1;
+        const year = isBetween1stAnd13th && today.getMonth() !== 11 ? today.getFullYear() : today.getFullYear() + 1;
         const month = isBetween1stAnd13th ? today.getMonth() + 1 : today.getMonth() !== 11 ? today.getMonth() + 2 : 1;
         const date = `${i}日（${getWeekday(today.getFullYear(), month, i)}）`;
         const $dayElement = $(`<div class="day-${i} row my-2"></div>`);
