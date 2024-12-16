@@ -86,7 +86,7 @@
       return '';
     }
   }
-    const year = isBetween1stAnd13th && today.getMonth() !== 11 ? today.getFullYear() : today.getFullYear() + 1;
+    const year = (isBetween1stAnd13th && today.getMonth() !== 11) ? today.getFullYear() : today.getFullYear() + 1;
     const month = isBetween1stAnd13th ? today.getMonth() + 1 : today.getMonth() !== 11 ? today.getMonth() + 2 : 1;
     const isBetween1stAnd13th = day >= 1 && day < 13;
     const isBetween13thAnd25th = day >= 13 && day < 25;
