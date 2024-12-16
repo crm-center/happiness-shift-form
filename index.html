@@ -61,10 +61,15 @@
       const storeParamInput = document.getElementById('storeParamInput');
       storeParamInput.value = storeParam;
     });
-
-    const year = (isBetween1stAnd13th && today.getMonth() !== 11) ? today.getFullYear() : today.getFullYear() + 1;
-    const today = new Date();
+    
     const day = today.getDate();
+    const isBetween1stAnd13th = day >= 1 && day < 13;
+    const isBetween13thAnd25th = day >= 13 && day < 25;
+    const isAfter25th = day >= 25;
+    const today = new Date();
+    const year = (isBetween1stAnd13th && today.getMonth() !== 11) ? today.getFullYear() : today.getFullYear() + 1;
+    const month = isBetween1stAnd13th ? today.getMonth() + 1 : today.getMonth() !== 11 ? today.getMonth() + 2 : 1;
+
     const lastday = new Date(today.getFullYear(), today.getMonth() + 1, 0);
 
     function getWeekday(year, month, day) {
@@ -88,10 +93,6 @@
     }
   }
 
-    const month = isBetween1stAnd13th ? today.getMonth() + 1 : today.getMonth() !== 11 ? today.getMonth() + 2 : 1;
-    const isBetween1stAnd13th = day >= 1 && day < 13;
-    const isBetween13thAnd25th = day >= 13 && day < 25;
-    const isAfter25th = day >= 25;
     const monthLastDay = new Date(year, month, 0);  
     // const renderCondition = isBetween1stAnd13th ? (i) => i >= 16 && i <= monthLastDay.getDate() : (isBetween13thAnd25th ? (i) => i >= 1 && i <= 15 : (i) => i >= 16 && i <= monthLastDay.getDate());
     // // 8月特別用
