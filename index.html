@@ -61,7 +61,8 @@
       const storeParamInput = document.getElementById('storeParamInput');
       storeParamInput.value = storeParam;
     });
-    
+
+    const year = (isBetween1stAnd13th && today.getMonth() !== 11) ? today.getFullYear() : today.getFullYear() + 1;
     const today = new Date();
     const day = today.getDate();
     const lastday = new Date(today.getFullYear(), today.getMonth() + 1, 0);
@@ -86,7 +87,7 @@
       return '';
     }
   }
-    const year = (isBetween1stAnd13th && today.getMonth() !== 11) ? today.getFullYear() : today.getFullYear() + 1;
+
     const month = isBetween1stAnd13th ? today.getMonth() + 1 : today.getMonth() !== 11 ? today.getMonth() + 2 : 1;
     const isBetween1stAnd13th = day >= 1 && day < 13;
     const isBetween13thAnd25th = day >= 13 && day < 25;
@@ -196,7 +197,6 @@
 
     for (let i = 1; i <= monthLastDay.getDate(); i++) {
       // if (renderCondition(i)) {
-        const year = isBetween1stAnd13th && today.getMonth() !== 11 ? today.getFullYear() : today.getFullYear() + 1;
         const month = isBetween1stAnd13th ? today.getMonth() + 1 : today.getMonth() !== 11 ? today.getMonth() + 2 : 1;
         const date = `${i}日（${getWeekday(year, month, i)}）`;
         const $dayElement = $(`<div class="day-${i} row my-2"></div>`);
