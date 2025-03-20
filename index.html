@@ -74,7 +74,8 @@
 
     function getWeekday(year, month, day) {
       const weekdays = ["日", "月", "火", "水", "木", "金", "土"];
-      const date = new Date(2025, 2, day);
+      const today = new Date();
+      const date = new Date(2025, today.getMonth() + 1, day);
       const weekdayIndex = date.getDay();
       return weekdays[weekdayIndex];
     }
