@@ -68,7 +68,7 @@
     const isBetween13thAnd25th = day >= 13 && day < 25;
     const isAfter25th = day >= 25;
     const year = (isBetween1stAnd13th && today.getMonth() !== 11) ? today.getFullYear() : today.getFullYear() + 1;
-    const month = isBetween1stAnd13th ? today.getMonth() + 1 : today.getMonth() !== 11 ? today.getMonth() + 2 : 1;
+    const month = isBetween1stAnd13th ? today.getMonth() : today.getMonth() !== 11 ? today.getMonth() + 1 : 1;
 
     const lastday = new Date(today.getFullYear(), today.getMonth() + 1, 0);
 
