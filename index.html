@@ -231,7 +231,7 @@
     }
       // 特別系
       for (let i = 1; i <= 6; i++) {
-          const date = `${i}日（${getWeekday(2025, 5, i)}）`;
+          const date = `${i}日（${getWeekday(2025, 4, i)}）`;
           const $dayElement = $(`<div class="day-2025-${i} row my-2"></div>`);
           const $inputContainer = $('<div class="col-12 input-container"></div>');
       
@@ -242,7 +242,7 @@
             `<p class="mx-1 my-auto">〜</p>`,
             `<select class="col-5" name="day-end-2025-${i}" id="day-2025-${i}">${option}</select>`,
           );
-          const specialShiftDate = `1月${i}日`;
+          const specialShiftDate = `5月${i}日`;
           $timeContainer.append(
            `<label for="day-2025-${i}" name="day-2025-${i}">1月${date}：${specialShift(specialShiftDate)}</label>`,
             $timeInnerContainer
