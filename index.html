@@ -70,7 +70,7 @@
     const year = (isBetween1stAnd13th && today.getMonth() !== 11) ? today.getFullYear() : today.getFullYear() + 1;
     const month = isBetween1stAnd13th ? today.getMonth() : today.getMonth() !== 11 ? today.getMonth() + 1 : 1;
 
-    const lastday = new Date(today.getFullYear(), today.getMonth() + 1, 0);
+    const lastday = new Date(today.getFullYear(), today.getMonth() , 0);
 
     function getWeekday(year, month, day) {
       const weekdays = ["日", "月", "火", "水", "木", "金", "土"];
