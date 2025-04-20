@@ -92,7 +92,7 @@
   //   } else {
   //     return '';
   //   }
-  }
+  // }s
 
     const monthLastDay = new Date(year, month + 1, 0);  
     // const renderCondition = isBetween1stAnd13th ? (i) => i >= 16 && i <= monthLastDay.getDate() : (isBetween13thAnd25th ? (i) => i >= 1 && i <= 15 : (i) => i >= 16 && i <= monthLastDay.getDate());
@@ -198,7 +198,6 @@
   <option value="07:45">07:45</option>`;
 
     for (let i = 1; i <= monthLastDay.getDate(); i++) {
-      // if (renderCondition(i)) {
         const month = isBetween1stAnd13th ? today.getMonth() + 1 : today.getMonth() !== 11 ? today.getMonth() + 2 : 1;
         const date = `${i}日（${getWeekday(year, month, i)}）`;
         const $dayElement = $(`<div class="day-${i} row my-2"></div>`);
@@ -227,7 +226,6 @@
         $inputContainer.append($timeContainer, $bikouContainer);
         $dayElement.append($inputContainer);
         $('.date').append($dayElement);
-      // }
     }
     //   // 特別系
     //   for (let i = 1; i <= 6; i++) {
