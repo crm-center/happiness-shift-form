@@ -62,23 +62,27 @@
       storeParamInput.value = storeParam;
     });
     
-    const today = new Date();
-    const day = today.getDate();
-    const isBetween1stAnd13th = day >= 1 && day < 13;
-    const isBetween13thAnd25th = day >= 13 && day < 25;
-    const isAfter25th = day >= 25;
-    const year = (isBetween1stAnd13th && today.getMonth() !== 11) ? today.getFullYear() : today.getFullYear() + 1;
-    const month = isBetween1stAnd13th ? today.getMonth() : today.getMonth() !== 11 ? today.getMonth() + 1 : 1;
+// 日付関係
+const today = new Date();
+const day = today.getDate();
+const isBetween1stAnd13th = day >= 1 && day < 13;
+const isBetween13thAnd25th = day >= 13 && day < 25;
+const isAfter25th = day >= 25;
 
-    const lastday = new Date(today.getFullYear(), today.getMonth() , 0);
+// 月インデックス（0〜11）と表示用（1〜12）を分けて扱う
+const baseMonthIndex = isBetween1stAnd13th ? today.getMonth() : (today.getMonth() !== 11 ? today.getMonth() + 1 : 0);
+const year = (isBetween1stAnd13th && today.getMonth() !== 11) ? today.getFullYear() : today.getFullYear() + 1;
+const displayMonth = baseMonthIndex + 1;
 
-    function getWeekday(year, month, day) {
-      const weekdays = ["日", "月", "火", "水", "木", "金", "土"];
-      const today = new Date();
-      const date = new Date(year, month -1, day);
-      const weekdayIndex = date.getDay();
-      return weekdays[weekdayIndex];
-    }
+const monthLastDay = new Date(year, baseMonthIndex + 1, 0); // 翌月の0日＝今月末日
+
+// 曜日取得関数
+function getWeekday(year, monthIndex, day) {
+  const weekdays = ["日", "月", "火", "水", "木", "金", "土"];
+  const date = new Date(year, monthIndex, day); // ←ここは0始まりでOK
+  return weekdays[date.getDay()];
+}
+
 
   // 特別
   function specialShift(date) {
@@ -197,36 +201,36 @@
   <option value="07:30">07:30</option>
   <option value="07:45">07:45</option>`;
 
-    for (let i = 1; i <= monthLastDay.getDate(); i++) {
-        const month = isBetween1stAnd13th ? today.getMonth() + 1 : today.getMonth() !== 11 ? today.getMonth() + 2 : 1;
-        const date = `${i}日（${getWeekday(year, month, i)}）`;
-        const $dayElement = $(`<div class="day-${i} row my-2"></div>`);
-        const $inputContainer = $('<div class="col-12 input-container"></div>');
+    // for (let i = 1; i <= monthLastDay.getDate(); i++) {
+    //     const month = isBetween1stAnd13th ? today.getMonth() + 1 : today.getMonth() !== 11 ? today.getMonth() + 2 : 1;
+    //     const date = `${i}日（${getWeekday(year, month, i)}）`;
+    //     const $dayElement = $(`<div class="day-${i} row my-2"></div>`);
+    //     const $inputContainer = $('<div class="col-12 input-container"></div>');
     
-        const $timeContainer = $('<div class="d-flex flex-column"></div>');
-        const $timeInnerContainer = $('<div class="d-flex"></div>');
-        $timeInnerContainer.append(
-          `<select class="col-5" name="day-start-${i}" id="day-${i}">${option}</select>`,
-          `<p class="mx-1 my-auto">〜</p>`,
-          `<select class="col-5" name="day-end-${i}" id="day-${i}">${option}</select>`,
-        );
-        const specialShiftDate = `${month}月${i}日`;
-        $timeContainer.append(
-         `<label for="day-${i}" name="day-${i}">${month}月${date}：${specialShift(specialShiftDate)}</label>`,
-          $timeInnerContainer
-        );
+    //     const $timeContainer = $('<div class="d-flex flex-column"></div>');
+    //     const $timeInnerContainer = $('<div class="d-flex"></div>');
+    //     $timeInnerContainer.append(
+    //       `<select class="col-5" name="day-start-${i}" id="day-${i}">${option}</select>`,
+    //       `<p class="mx-1 my-auto">〜</p>`,
+    //       `<select class="col-5" name="day-end-${i}" id="day-${i}">${option}</select>`,
+    //     );
+    //     const specialShiftDate = `${month}月${i}日`;
+    //     $timeContainer.append(
+    //      `<label for="day-${i}" name="day-${i}">${month}月${date}：${specialShift(specialShiftDate)}</label>`,
+    //       $timeInnerContainer
+    //     );
     
-        const $bikouContainer = $('<div class="d-flex flex-column my-1"></div>');
-        $bikouContainer.append(
-          `<label for="day-${i}" name="day-${i}">備考：</label>`,
-          `<input class="col-12" type="text" name="day-bikou-${i}" id="day-${i}" />`,
-          `<input class="col-12" type="hidden" name="day-date-${i}" id="day-${i}" value="${month}月${i}" />`
-        );
+    //     const $bikouContainer = $('<div class="d-flex flex-column my-1"></div>');
+    //     $bikouContainer.append(
+    //       `<label for="day-${i}" name="day-${i}">備考：</label>`,
+    //       `<input class="col-12" type="text" name="day-bikou-${i}" id="day-${i}" />`,
+    //       `<input class="col-12" type="hidden" name="day-date-${i}" id="day-${i}" value="${month}月${i}" />`
+    //     );
     
-        $inputContainer.append($timeContainer, $bikouContainer);
-        $dayElement.append($inputContainer);
-        $('.date').append($dayElement);
-    }
+    //     $inputContainer.append($timeContainer, $bikouContainer);
+    //     $dayElement.append($inputContainer);
+    //     $('.date').append($dayElement);
+    // }
     //   // 特別系
     //   for (let i = 1; i <= 6; i++) {
     //       const date = `${i}日（${getWeekday(2025, 4, i)}）`;
@@ -258,6 +262,38 @@
     //       $('.date').append($dayElement);
     // }
     // ここまで
+
+// 曜日表示付きの日別シフトフォーム生成
+for (let i = 1; i <= monthLastDay.getDate(); i++) {
+  const dateLabel = `${i}日（${getWeekday(year, baseMonthIndex, i)}）`; // ←0始まり渡してOK
+  const $dayElement = $(`<div class="day-${i} row my-2"></div>`);
+  const $inputContainer = $('<div class="col-12 input-container"></div>');
+
+  const $timeContainer = $('<div class="d-flex flex-column"></div>');
+  const $timeInnerContainer = $('<div class="d-flex"></div>');
+  $timeInnerContainer.append(
+    `<select class="col-5" name="day-start-${i}" id="day-${i}">${option}</select>`,
+    `<p class="mx-1 my-auto">〜</p>`,
+    `<select class="col-5" name="day-end-${i}" id="day-${i}">${option}</select>`
+  );
+
+  const specialShiftDate = `${displayMonth}月${i}日`;
+  $timeContainer.append(
+    `<label for="day-${i}" name="day-${i}">${displayMonth}月${dateLabel}：${specialShift(specialShiftDate)}</label>`,
+    $timeInnerContainer
+  );
+
+  const $bikouContainer = $('<div class="d-flex flex-column my-1"></div>');
+  $bikouContainer.append(
+    `<label for="day-${i}" name="day-${i}">備考：</label>`,
+    `<input class="col-12" type="text" name="day-bikou-${i}" id="day-${i}" />`,
+    `<input class="col-12" type="hidden" name="day-date-${i}" id="day-${i}" value="${displayMonth}月${i}" />`
+  );
+
+  $inputContainer.append($timeContainer, $bikouContainer);
+  $dayElement.append($inputContainer);
+  $('.date').append($dayElement);
+}
     
  $(document).ready(function () {
      const liffId = "1661326584-85YGYPYw";
