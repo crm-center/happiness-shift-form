@@ -81,17 +81,17 @@
     }
 
   // 特別
-  function specialShift(date) {
-    const weekendEigyo = ['12月29日','12月30日','12月31日','1月2日','1月3日','1月4日'];
-    const sundayEigyo = ['1月1日','1月5日'];
+  // function specialShift(date) {
+  //   const weekendEigyo = ['12月29日','12月30日','12月31日','1月2日','1月3日','1月4日'];
+  //   const sundayEigyo = ['1月1日','1月5日'];
   
-    if (sundayEigyo.includes(date)) {
-      return '日曜営業';
-    } else if (weekendEigyo.includes(date)) {
-      return '週末営業';
-    } else {
-      return '';
-    }
+  //   if (sundayEigyo.includes(date)) {
+  //     return '日曜営業';
+  //   } else if (weekendEigyo.includes(date)) {
+  //     return '週末営業';
+  //   } else {
+  //     return '';
+  //   }
   }
 
     const monthLastDay = new Date(year, month + 1, 0);  
@@ -200,7 +200,7 @@
     for (let i = 1; i <= monthLastDay.getDate(); i++) {
       // if (renderCondition(i)) {
         const month = isBetween1stAnd13th ? today.getMonth() + 1 : today.getMonth() !== 11 ? today.getMonth() + 2 : 1;
-        const date = `${i}日（${getWeekday(year, month + 1, i)}）`;
+        const date = `${month}月${i}日（${getWeekday(year, month, i)}）`;
         const $dayElement = $(`<div class="day-${i} row my-2"></div>`);
         const $inputContainer = $('<div class="col-12 input-container"></div>');
     
@@ -229,36 +229,36 @@
         $('.date').append($dayElement);
       // }
     }
-      // 特別系
-      for (let i = 1; i <= 6; i++) {
-          const date = `${i}日（${getWeekday(2025, 4, i)}）`;
-          const $dayElement = $(`<div class="day-2025-${i} row my-2"></div>`);
-          const $inputContainer = $('<div class="col-12 input-container"></div>');
+    //   // 特別系
+    //   for (let i = 1; i <= 6; i++) {
+    //       const date = `${i}日（${getWeekday(2025, 4, i)}）`;
+    //       const $dayElement = $(`<div class="day-2025-${i} row my-2"></div>`);
+    //       const $inputContainer = $('<div class="col-12 input-container"></div>');
       
-          const $timeContainer = $('<div class="d-flex flex-column"></div>');
-          const $timeInnerContainer = $('<div class="d-flex"></div>');
-          $timeInnerContainer.append(
-            `<select class="col-5" name="day-start-2025-${i}" id="day-2025-${i}">${option}</select>`,
-            `<p class="mx-1 my-auto">〜</p>`,
-            `<select class="col-5" name="day-end-2025-${i}" id="day-2025-${i}">${option}</select>`,
-          );
-          const specialShiftDate = `5月${i}日`;
-          $timeContainer.append(
-           `<label for="day-2025-${i}" name="day-2025-${i}">5月${date}：${specialShift(specialShiftDate)}</label>`,
-            $timeInnerContainer
-          );
+    //       const $timeContainer = $('<div class="d-flex flex-column"></div>');
+    //       const $timeInnerContainer = $('<div class="d-flex"></div>');
+    //       $timeInnerContainer.append(
+    //         `<select class="col-5" name="day-start-2025-${i}" id="day-2025-${i}">${option}</select>`,
+    //         `<p class="mx-1 my-auto">〜</p>`,
+    //         `<select class="col-5" name="day-end-2025-${i}" id="day-2025-${i}">${option}</select>`,
+    //       );
+    //       const specialShiftDate = `5月${i}日`;
+    //       $timeContainer.append(
+    //        `<label for="day-2025-${i}" name="day-2025-${i}">5月${date}：${specialShift(specialShiftDate)}</label>`,
+    //         $timeInnerContainer
+    //       );
       
-          const $bikouContainer = $('<div class="d-flex flex-column my-1"></div>');
-          $bikouContainer.append(
-            `<label for="day-${i}" name="day-2025-${i}">備考：</label>`,
-            `<input class="col-12" type="text" name="day-bikou-2025-${i}" id="day-2025-${i}" />`,
-            `<input class="col-12" type="hidden" name="day-date-2025-${i}" id="day-2025-${i}" value="1月${i}" />`
-          );
+    //       const $bikouContainer = $('<div class="d-flex flex-column my-1"></div>');
+    //       $bikouContainer.append(
+    //         `<label for="day-${i}" name="day-2025-${i}">備考：</label>`,
+    //         `<input class="col-12" type="text" name="day-bikou-2025-${i}" id="day-2025-${i}" />`,
+    //         `<input class="col-12" type="hidden" name="day-date-2025-${i}" id="day-2025-${i}" value="1月${i}" />`
+    //       );
       
-          $inputContainer.append($timeContainer, $bikouContainer);
-          $dayElement.append($inputContainer);
-          $('.date').append($dayElement);
-    }
+    //       $inputContainer.append($timeContainer, $bikouContainer);
+    //       $dayElement.append($inputContainer);
+    //       $('.date').append($dayElement);
+    // }
     // ここまで
     
  $(document).ready(function () {
