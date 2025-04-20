@@ -81,18 +81,18 @@
     }
 
   // 特別
-  // function specialShift(date) {
-  //   const weekendEigyo = ['12月29日','12月30日','12月31日','1月2日','1月3日','1月4日'];
-  //   const sundayEigyo = ['1月1日','1月5日'];
+  function specialShift(date) {
+    const weekendEigyo = ['12月29日','12月30日','12月31日','1月2日','1月3日','1月4日'];
+    const sundayEigyo = ['1月1日','1月5日'];
   
-  //   if (sundayEigyo.includes(date)) {
-  //     return '日曜営業';
-  //   } else if (weekendEigyo.includes(date)) {
-  //     return '週末営業';
-  //   } else {
-  //     return '';
-  //   }
-  // }s
+    if (sundayEigyo.includes(date)) {
+      return '日曜営業';
+    } else if (weekendEigyo.includes(date)) {
+      return '週末営業';
+    } else {
+      return '';
+    }
+  }
 
     const monthLastDay = new Date(year, month + 1, 0);  
     // const renderCondition = isBetween1stAnd13th ? (i) => i >= 16 && i <= monthLastDay.getDate() : (isBetween13thAnd25th ? (i) => i >= 1 && i <= 15 : (i) => i >= 16 && i <= monthLastDay.getDate());
