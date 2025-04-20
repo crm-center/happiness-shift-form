@@ -79,7 +79,7 @@ const monthLastDay = new Date(year, baseMonthIndex + 1, 0); // 翌月の0日＝�
 // 曜日取得関数
 function getWeekday(year, monthIndex, day) {
   const weekdays = ["日", "月", "火", "水", "木", "金", "土"];
-  const date = new Date(year, 4, day); // ←ここは0始まりでOK
+  const date = new Date(2025, 5, day); // ←ここは0始まりでOK
   return weekdays[date.getDay()];
 }
 
